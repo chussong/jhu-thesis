@@ -1,4 +1,103 @@
 \chapter{Introduction}
 \label{chap:intro}
 
-Introduce your thesis \citep{A}
+The study of theoretical particle physics has been dominated by relativistic
+quantum field theory (QFT) since the middle of the last century. By far the most 
+well-known outgrowth of QFT is the standard model of particle physics, which is
+by many measures the most precise and accurate scientific theory ever created.
+QFT is extremely versatile, however: in addition to the scattering of 
+unimaginably tiny particles inside a collider, it can equally be used to model 
+things as large as a crystal on a tabletop or a black hole more massive than the
+sun. Accordingly, if we are able to detach ourselves from models of particular
+systems and obtain results about the structure of QFT itself, we can apply that
+knowledge to very diverse scenarios and answer questions from unexpected angles.
+This is essentially the goal of research into pure conformal field theory.
+
+I will go into much more detail about the concrete nature of conformal field
+theory in chapter \ref{chap:cft}, but roughly speaking, conformal field theories
+are quantum field theories which behave in qualitatively the same way at any
+length scale (or, equivalently, energy scale). The standard model is not a CFT:
+most particles have mass energy, so if the total energy of a system is below 
+this, it's not possible for that particle to be created, meaning that physics is
+qualitatively different below and above this threshold. However, many 
+interesting quantum systems \emph{can} be modeled as CFTs, particularly in
+condensed matter, where the Ising model is the most famous example. 
+Additionally, even though particle physics is not a CFT overall, there are a 
+number of regimes in which it acts like one, such as when the total energy of a
+system is sufficiently high that all particles are available and their masses
+can be treated as insignificant.
+
+Perhaps even more intriguing is the relatively recently-discovered AdS/CFT
+correspondence. This is a series of mathematical proofs showing an exact, 
+one-to-one correspondence between processes in a conformal field theory with $d$
+spacetime dimensions and quantum gravity processes in anti-de Sitter spacetime
+with $d+1$ dimensions (roughly, the most generic $d+1$-dimensional spacetime
+having a tendency to collapse in on itself). This correspondence can be thought
+of as akin to that between an object in a candlelit room and its shadow: when
+one moves, the other moves accordingly without fail.
+
+The AdS/CFT correspondence
+is much stronger than this, however: looking at a shadow, one might easily 
+mistake the head of a duck for a human prankster's hand, or vice versa, but 
+quantum operators in the ``shadow'' CFT contain \emph{all} of the information in
+their AdS counterparts, such that it's always possible in principle to deduce 
+the full situation in AdS by looking solely at the CFT, and vice versa. In fact,
+the information parity is so complete that there is no sense in which one side
+of the correspondence is more ``real'' than the other: they are merely two ways
+of thinking of the same phenomenon.
+
+The discovery of this correspondence has presented an enormous opportunity for
+theoretical physics: any result about a generic CFT can equally be interpreted
+through the lens of quantum gravity, and likewise any result from gravity which
+holds in a theory with a negative cosmological constant can be translated into
+a statement about generic conformal field theories. Furthermore, many questions 
+with no hint of a clear answer in their own domain can be mapped to a dual 
+question on the other side, answered there, and then the answer can in turn be 
+mapped back to the original domain. The first project presented in this thesis, 
+described in section \ref{sec:bh}, is an example of this strategy.
+
+Because generic CFT results can be applied to so many problems in areas as 
+diverse as particle physics, quantum gravity, and condensed matter, they are 
+quite eagerly sought by physicists of all stripes. The standard way to produce
+these results is by careful mathematical proofs, which has given us fascinating
+theorems such as \citep{example} and \citep{example}. As in pure math, however,
+there are many questions with interesting implications for which no solid proof
+is forthcoming. In these cases, one can often find sufficiently good approximate
+answers by modelling the problem numerically on a computer. This thesis presents
+two cases where numerical methods successfully uncovered new insights into 
+previously unsolved generic CFT problems.
+
+The first case, described in section \ref{sec:bh}, involves the black hole 
+information paradox. The behavior of objects falling into black holes is a
+quantum gravity process, which under the AdS/CFT correspondence can also be
+viewed as a process inside a generic CFT. This process is governed by the
+so-called Virasoro Conformal Blocks, a class of functions. The blocks are 
+constrained by conformal symmetry to have a particular form, but this form is
+known only obliquely through various unsolved equations. Accordingly, if we can
+narrow down the form of these functions, we can inspect them for insights into
+the gravitational processes at work around black holes. In this project, I used 
+a novel algorithm to approximate the Virasoro blocks to a level which was
+previously impossible, and thereby extract previously unknown information about
+the controversial topic of black hole decay.
+
+The second case, described in section \ref{sec:trunc}, concerns the explicit 
+calculation of a number of observables in some generic CFTs using the method of
+\emph{conformal truncation}. Quantum states in a conformal field theory can be
+classified by their eigenvalues under dilatations of spacetime; these 
+eigenvalues, $\Delta$, are called the \emph{scaling dimensions} or 
+\emph{conformal weights} of the states.
+
+There is a lot to say about scaling dimensions, which will be discussed in a bit
+more detail in chapter \ref{chap:cft}, but two properties are particularly 
+important for this application: firstly, over relatively long distances, states 
+with lower scaling dimensions are more important; secondly, there is a minimum 
+scaling dimension, but no maximum (they continue increasing forever). Therefore, 
+while there are an infinite number of states in total, we can naturally restrict 
+this to a finite number by imposing a cutoff and only considering states below 
+that cutoff. These states should provide a good picture of phenomena over 
+relatively small distances. I was able to show that this is indeed the case, and 
+create a program for approximately determining the elements of this basis and 
+their interactions with each other. This information can be used to obtain
+results about any CFT phenomena which are visible below the cutoff dimension.
+
+% next up: CFT review

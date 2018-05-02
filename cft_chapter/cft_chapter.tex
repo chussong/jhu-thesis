@@ -1,0 +1,124 @@
+\chapter{Conformal Field Theory}
+\label{chap:cft}
+
+\section{What is CFT?}
+\label{sec:cft}
+
+I will begin by briefly explaining the relevant aspects of conformal field 
+theory. As I mentioned before, conformal field theory is the study of quantum
+fields which are broadly stationary under infinitesimal conformal 
+transformations; in physics, these transformations can be understood as all 
+those with the following action on the metric $g_{\mu \nu}$:
+
+\be
+    g_{\mu \nu} \to \Omega(x) g_{\mu \nu},
+\ee
+
+where $Omega(x)$ is a function which can depend on the coordinates in any way,
+but crucially is applied to every entry of the metric tensor democratically.
+Transformations of this form are angle-preserving, in that all vectors which are
+orthogonal on the old metric will also be orthogonal on the new metric, and vice
+versa. Indeed, the conformal transformations can be thought of as being defined
+as the members of the group of angle-preserving maps, which will be more 
+familiar to those with a background in mathematics. In fact, in two dimensions 
+they are quite the same as the conformal maps which are used extensively in 
+complex analysis. In the context of general relativity, being angle-preserving 
+means that these transformations also preserve causality, so they can also be
+thought of as the most general group of causality-preserving spacetime 
+symmetries.
+
+It turns out to be quite straightforward to enumerate the conformal group's 
+constituent transformations: they are the Poincar\'e transformations of special
+relativity, along with scaling of all coordinates by a constant 
+$\vec x \to a \vec x$ (usually referred to as dilatation), and inversion of 
+spacetime $\vec x \to \vec x / x^2$; both of these have been centered on 
+$\vec 0$, but of course they could be performed about any point. If we want to
+preserve orientations in addition to angles, then we have to replace the 
+inversion with a \emph{special conformal transformation}, which is an inversion
+followed by a translation followed by a second inversion to return to the 
+original orientation; these operations are sufficient to reproduce all 
+orientation-preserving conformal maps.
+
+If one demands that a theory\footnote{In particle physics parlance, `a theory'
+means a mathematical model for some system (possibly the whole universe) which
+includes an inventory of degrees of freedom (generally particles) and a 
+prescribed method for calculating their evolution through spacetime. `A 
+[relativistic] quantum field theory' means a theory whose degrees of freedom are
+quantum fields which are symmetric under Poincar\'e transformations; `a 
+conformal field theory' is a QFT which is symmetric under all conformal 
+transformations. You can think of `a CFT' as being a particular instantiation of
+the more general concept of conformally symmetric models.} respects conformal
+symmetry, then the conformal operators ${\cal O}$ representing its quantum 
+states must behave in a particular way under infinitesimal conformal 
+transformations, such as the infinitesimal dilatation $D$:
+
+\be
+    D {\cal O}_\Delta = \Delta {\cal O}_\Delta.
+\ee
+
+$\Delta$, the dilatation eigenvalue, is known as the \emph{[scaling] dimension}
+of the operator ${\cal O}_\Delta$, and is an inherent feature of the operator
+which is not changed by coordinate transformations. This can be exponentiated to
+produce the following behavior under full coordinate scaling:
+
+\be
+    {\cal O}_\Delta (a x) = a^{-\Delta} {\cal O}_\Delta
+\ee
+
+which is the origin of the term \emph{dimension}: in ordinary old-fashioned 
+geometry, when the reference length scale is doubled in every direction, the 
+size of a 3-dimensional object decreases by a factor of $2^3$, so the scaling 
+dimension of a cube is $\Delta = 3$.
+
+\section{Correlation Functions and the OPE}
+\label{sec:correlators}
+
+Naturally, there is much, much more which could be said about CFTs, but the
+other concept which is central to this paper is the \emph{correlation function}.
+This is not originally a CFT concept, but due to the restrictions imposed by
+conformal symmetry, it takes a central role in the CFT world: since the two
+scalar operators ${\cal O}_\Delta$ and ${\cal O}_{\Delta'}$ have definite
+behavior under dilatations and their correlation function must be a scalar due
+to Poincar\'e invariance, we can make the following conclusion:
+
+\begin{multline}
+    \left \langle {\cal O}_\Delta(ax) {\cal O}_{\Delta'}(ax') \right \rangle
+    &= \left \langle a^{-\Delta} {\cal O}_\Delta(x) 
+                    a^{-\Delta'} {\cal O}_{\Delta'}(x') \right \rangle \\
+    &= f((ax - ax')^2) = a^{-\Delta - \Delta'} f((x - x')^2)
+\end{multline}
+
+so the correlation function of two conformal operators is another conformal
+operator whose scaling dimension is the sum of the two constituent ones. In a 
+non-interacting theory, the new operator is the simplest possible one:
+
+\be
+    f((x - x')^2) = \frac{C(\Delta, \Delta')}{(x - x')^{\Delta + \Delta'}},
+\ee
+
+where $C(\Delta, \Delta')$ is some constant number; we can get rid of this as
+well by redefining 
+${\cal O}_\Delta \to {\cal O}_\Delta / \sqrt{C_{\Delta \Delta}}$, which is 
+always done in practice.
+
+This argument is closely related to the idea of the \emph{operator product
+expansion}, or OPE, which says that the product of two operators located very
+near each other can be represented as a single operator of its own, which can in
+turn be represented as an expansion in (i.e. sum over) other operators in the
+theory:
+
+\be
+    {\cal O}_A {\cal O}_B = {\cal O}_\mathrm{complicated} 
+    = \sum_i {\cal O}_{i,\mathrm{simple}}
+\ee
+
+Note the lack of brackets: this is not a statement about correlation functions
+of operators, but rather one about literally expressing the operators themselves
+in a new way. This is actually a true statement in generally (non-conformal) 
+QFT, but it generally only converges at extremely short distances -- in a CFT,
+since we can shrink space to put any two operators arbitrarily close to each
+other, the OPE converges for any pair of operators as long as there isn't 
+anything in the way of putting them next to each other.
+
+\section{AdS/CFT Holography}
+\label{sec:adscft}
