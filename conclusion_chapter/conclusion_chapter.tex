@@ -1,4 +1,51 @@
 \chapter{Discussion and Conclusion}
 \label{chap:conclusion}
 
-Discuss and conclude your thesis \citep{C}
+The analyses in both of the preceding chapters represent ways of using numerical
+computation to attack problems from unexpected angles. Whereas quantum field 
+theory is most often solved using perturbation theory in weak interaction, these
+projects present entirely orthogonal solutions. In \ref{chap:bh}, the power
+series outputted by the program is the \emph{exact} correct answer up to the 
+given power in $q$ -- accuracy of the predictions is guaranteed within a given
+coordinate range, entirely irrespective of the mass of the objects or the 
+strength of the gravitational interaction. In \ref{chap:3d}, the program creates
+a Hamiltonian for the system which is exactly correct (up to floating point 
+errors) for all of the states included -- the approximation is in ignoring the
+higher energy states rather than making any assumptions about the strength of
+the interactions.
+
+Accordingly, numerical methods can answer problems which are essentially 
+intractable in traditional analytic, proof-based particle physics. The best
+known analytic treatment of the AdS$_3$ black hole system remains the 
+semiclassical approximation to which we compare our results -- as we 
+demonstrated, this approximation completely fails to capture the resolution of
+the paradox. The behavior could only be found using numerical methods grounded
+in a carefully chosen angle of attack.
+
+Similarly, while the comparisons in \ref{chap:3d} are grounded in the relatively
+well understood 3d Ising model, many aspects of this model remain unknown, and
+the conformal truncation method we introduce can easily be adapted to study any 
+low energy effective theory which can be thought of as a CFT deformed by some 
+relevant operator. This is a very broad class of theories, and we expect that
+conformal truncation will yield many otherwise inaccessible results when applied
+to systems from particle theory and particularly condensed matter.
+
+We would also like to point out that neither of these projects would have been
+possible without a cross-disciplinary understanding of various 
+efficiency-related topics in computer science. Both make extensive use of 
+dynamic programming, and both use a number of data structures and algorithms 
+which were carefully selected to minimize repeated work and maximize 
+parallelizability without explicit synchronization. We believe that many
+outstanding problems in theoretical physics would be amenable to resolution by
+a combined approach using both physics and computer science, and would encourage
+any physicists interested in computation to improve their understanding of 
+algorithm design by working through short CS problems like those at 
+\href{https://projecteuler.net}{Project Euler}.
+
+Ultimately, since the problems of theoretical physics are becoming more 
+mathematically complex while computers are becoming more powerful, we expect
+that the application of cross-disciplinary numerical methods like those used in
+this thesis will grow increasingly common. When combined with novel mathematical
+approaches like AdS/CFT holography, we believe that computation represents a
+compelling forefront for particle physics research, and we are glad to have had
+the opportunity to contribute to it.

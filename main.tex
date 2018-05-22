@@ -169,6 +169,95 @@ natbib = true
 
 \setcounter{tocdepth}{4}
 \setcounter{secnumdepth}{4}
+
+\usepackage{multirow}
+\numberwithin{equation}{section}
+\usepackage{relsize}
+\usepackage{epsfig}
+
+\def\half{{1 \over 2}}
+\def\cn{{\mathcal N}}
+\def\tr{{\rm Tr}}
+\def\la{\lambda} 
+\def\sl{\slashed}
+\def\lb{\bar{\lambda}}  
+\def\m{\mu}   
+\def\mb{\bar{\mu}}
+\def\wb{\bar{w}} 
+\def\e{\eta}
+\def\ep{\epsilon}
+\def\a{\alpha}
+\def\ad{\dot{\alpha}}
+\def\ab{\bar{a}}
+\def\eb{\tilde{\eta}}
+\def\Qb{\bar{Q}}
+\def\Or[#1]{{\text{O}}\left({#1}\right)}
+\def\dotl[#1,#2]{\left\langle #1, #2 \right\rangle}
+\def\dotlb[#1,#2]{[ #1, #2 ]}
+\def\dotp[#1,#2]{(#1) \cdot (#2)}
+\def\aff[#1,#2]{\hat{#1}(#2)}
+\def\n4sym{{\cal N}=4 SYM}
+\def\>{\rangle}
+\def\<{\langle}
+\def\weight[#1,#2,#3]{\{(#1),#2,#3\}}
+\def\ads[#1]{$\text{AdS}_{#1}$}
+\def\lrdel{\overset{\leftrightarrow}{\nabla}}
+\newcommand{\vect}[1]{{\bf{#1}}}
+\newcommand{\ba}{\begin{eqnarray}}
+\newcommand{\ea}{\end{eqnarray}}
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\ee}{\end{eqnarray}}
+\newcommand{\bq}{\begin{equation}}
+\newcommand{\eq}{\end{equation}}
+\newcommand{\benn}{\begin{equation*}}
+\newcommand{\eenn}{\end{equation*}}
+\newcommand{\bi}{\begin{itemize}}  
+\newcommand{\ei}{\end{itemize}}
+\renewcommand{\d}{\partial}
+\newcommand{\CA}{{\cal A}}
+\newcommand{\CS}{{\cal S}}
+\newcommand{\CC}{{\cal C}}
+\newcommand{\CD}{{\cal D}}
+\newcommand{\CE}{{\cal E}}
+\newcommand{\CF}{{\cal F}}
+\newcommand{\CI}{{\cal I}}
+\newcommand{\CL}{{\cal L}}
+\newcommand{\CJ}{{\cal J}}
+\newcommand{\CM}{{\cal M}}
+\newcommand{\CN}{{\cal N}}
+\newcommand{\CO}{{\cal O}}
+\newcommand{\CP}{{\cal P}}
+\newcommand{\CR}{{\cal R}}
+\newcommand{\CT}{{\cal T}}
+\newcommand{\CV}{{\cal V}}
+\newcommand{\nn}{\nonumber}
+\renewcommand{\Im}{\text{Im}}
+\newcommand{\blue}{\bf\color{blue}}
+\newcommand{\red}{\bf\color{red}}
+\newcommand{\magenta}{\bf\color{magenta}}
+\newcommand\draftnote[1]{{\blue #1}}
+\newcommand\oo\infty
+\newcommand\s\sigma
+\newcommand\de\delta
+\newcommand\De\Delta
+\newcommand\p[1]{\left(#1\right)}
+\newcommand\f\phi
+\newcommand\g\gamma
+\newcommand\x\times
+\newcommand{\nin}{\noindent}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\fr}{\frac}
+\newcommand{\comm}[2]{[#1,#2]}
+\newcommand{\AdS}{\textrm{AdS}}
+\newcommand{\CFT}{\textrm{CFT}}
+\newcommand{\Ocal}{{\cal O}}
+\newcommand{\Dcal}{{\cal D}}
+\newcommand{\Ncal}{{\cal N}}
+\newcommand{\Mcal}{{\cal M}}
+\newcommand{\Pcal}{{\cal P}}
+\newcommand{\Vcal}{{\cal V}}
+
 \begin{document}
 
 \newcommand{\bm}[1]{ \mbox{\boldmath $ #1 $} }
@@ -193,7 +282,7 @@ in conformity with the requirements for the degree of\\
 Doctor of Philosophy }\\
 \vspace*{.75in}
 {\bf Baltimore, Maryland} \\
-{\bf June, 2018} \\     % change it accordingly!
+{\bf May 30th, 2018} \\     % change it accordingly!
 \vspace*{.5in}
 \begin{small}
 {\bf \copyright{ }2018 by Charles Hussong} \\
@@ -226,27 +315,20 @@ Doctor of Philosophy }\\
 \cleardoublepage % Needed because our intro chapter doesn't really have anything
 \pagenumbering{arabic}
 
-
-% add your chapters, best way is to have separate TeX files for each chapter
-%\include{chapter0}
-%\include{chapter1}
-
-%% The above was the recommended setup by https://github.com/weitzner/jhu-thesis-template but it's no longer needed
-%% after Muschelli's changes which stores different chapters in their
-%% respective directories. You will still need to add your chapters as
-%% TeX files or Rnw files (see rnw_chapter as an example) and please
-%% remember to update the makefile accordingly.
-
 \begin{refsection}[intro_chapter/intro_chapter.bib]
 \include{intro_chapter/intro_chapter}
 \cleardoublepage
 \printbibliography[title={References}]
 \end{refsection}
 
-%% If using Overleaf, you'll have to upload the resulting tex file & figures
-%% since Overleaf does not support Rnw files right now (April 13, 2016)
-\begin{refsection}[rnw_chapter/rnw_chapter.bib]
-\include{rnw_chapter/rnw_chapter}
+\begin{refsection}[cft_chapter/cft_chapter.bib]
+\include{cft_chapter/cft_chapter}
+\cleardoublepage
+\printbibliography[title={References}]
+\end{refsection}
+
+\begin{refsection}[virasoro_chapter/virasoro_chapter.bib]
+\include{virasoro_chapter/virasoro_chapter}
 \cleardoublepage
 \printbibliography[title={References}]
 \end{refsection}

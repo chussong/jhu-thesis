@@ -10,9 +10,9 @@ fields which are broadly stationary under infinitesimal conformal
 transformations; in physics, these transformations can be understood as all 
 those with the following action on the metric $g_{\mu \nu}$:
 
-\be
+\begin{equation}
     g_{\mu \nu} \to \Omega(x) g_{\mu \nu},
-\ee
+\end{equation}
 
 where $Omega(x)$ is a function which can depend on the coordinates in any way,
 but crucially is applied to every entry of the metric tensor democratically.
@@ -39,31 +39,31 @@ followed by a translation followed by a second inversion to return to the
 original orientation; these operations are sufficient to reproduce all 
 orientation-preserving conformal maps.
 
-If one demands that a theory\footnote{In particle physics parlance, `a theory'
-means a mathematical model for some system (possibly the whole universe) which
-includes an inventory of degrees of freedom (generally particles) and a 
+If one demands that a theory\footnote{In particle physics parlance, `\textbf{a} 
+theory' means a mathematical model for some system (possibly the whole universe)
+which includes an inventory of degrees of freedom (generally particles) and a 
 prescribed method for calculating their evolution through spacetime. `A 
 [relativistic] quantum field theory' means a theory whose degrees of freedom are
 quantum fields which are symmetric under Poincar\'e transformations; `a 
 conformal field theory' is a QFT which is symmetric under all conformal 
-transformations. You can think of `a CFT' as being a particular instantiation of
+transformations. One can think of `a CFT' as being a particular instantiation of
 the more general concept of conformally symmetric models.} respects conformal
 symmetry, then the conformal operators ${\cal O}$ representing its quantum 
 states must behave in a particular way under infinitesimal conformal 
 transformations, such as the infinitesimal dilatation $D$:
 
-\be
+\begin{equation}
     D {\cal O}_\Delta = \Delta {\cal O}_\Delta.
-\ee
+\end{equation}
 
 $\Delta$, the dilatation eigenvalue, is known as the \emph{[scaling] dimension}
 of the operator ${\cal O}_\Delta$, and is an inherent feature of the operator
 which is not changed by coordinate transformations. This can be exponentiated to
 produce the following behavior under full coordinate scaling:
 
-\be
+\begin{equation}
     {\cal O}_\Delta (a x) = a^{-\Delta} {\cal O}_\Delta
-\ee
+\end{equation}
 
 which is the origin of the term \emph{dimension}: in ordinary old-fashioned 
 geometry, when the reference length scale is doubled in every direction, the 
@@ -81,20 +81,20 @@ scalar operators ${\cal O}_\Delta$ and ${\cal O}_{\Delta'}$ have definite
 behavior under dilatations and their correlation function must be a scalar due
 to Poincar\'e invariance, we can make the following conclusion:
 
-\begin{multline}
+\begin{align}
     \left \langle {\cal O}_\Delta(ax) {\cal O}_{\Delta'}(ax') \right \rangle
     &= \left \langle a^{-\Delta} {\cal O}_\Delta(x) 
                     a^{-\Delta'} {\cal O}_{\Delta'}(x') \right \rangle \\
     &= f((ax - ax')^2) = a^{-\Delta - \Delta'} f((x - x')^2)
-\end{multline}
+\end{align}
 
 so the correlation function of two conformal operators is another conformal
 operator whose scaling dimension is the sum of the two constituent ones. In a 
 non-interacting theory, the new operator is the simplest possible one:
 
-\be
+\begin{equation}
     f((x - x')^2) = \frac{C(\Delta, \Delta')}{(x - x')^{\Delta + \Delta'}},
-\ee
+\end{equation}
 
 where $C(\Delta, \Delta')$ is some constant number; we can get rid of this as
 well by redefining 
@@ -107,18 +107,43 @@ near each other can be represented as a single operator of its own, which can in
 turn be represented as an expansion in (i.e. sum over) other operators in the
 theory:
 
-\be
+\begin{equation}
     {\cal O}_A {\cal O}_B = {\cal O}_\mathrm{complicated} 
     = \sum_i {\cal O}_{i,\mathrm{simple}}
-\ee
+\end{equation}
 
 Note the lack of brackets: this is not a statement about correlation functions
 of operators, but rather one about literally expressing the operators themselves
-in a new way. This is actually a true statement in generally (non-conformal) 
+in a new way. This is actually a true statement in ordinary (non-conformal) 
 QFT, but it generally only converges at extremely short distances -- in a CFT,
 since we can shrink space to put any two operators arbitrarily close to each
 other, the OPE converges for any pair of operators as long as there isn't 
-anything in the way of putting them next to each other.
+anything between them which would prevent them from being shrunk together.
 
 \section{AdS/CFT Holography}
 \label{sec:adscft}
+
+In addition to being used to describe systems which are themselves conformally
+symmetric (or perhaps merely approximately so), conformal field theory can also
+be applied to superficially unrelated problems in quantum gravity. This is due
+to the AdS/CFT Correspondence, which says that states in a conformal field
+theory are exactly dual to states in a theory of quantum gravity in anti-de 
+Sitter spacetime, the maximally symmetric spacetime with a negative cosmological
+constant. The correspondence is such that any dynamic process on either side 
+must have a dual process on the other side, which is itself a perfectly natural 
+process in its own domain. Crucially, there is no sense in which one of these 
+processes is `real' and the other is an `image' of it -- they are both valid 
+independently, and neither side can intrinsically be taken to be more 
+fundamental than the other. The two sides are descriptions of the same thing in
+two different languages: words, inflection, and even the structure of the 
+sentences may be totally different, but they're still talking about the same
+object and are capable in principle of expressing all the same ideas about it.
+
+Broadly speaking, research into AdS/CFT tends to focus on taking problems which 
+are intractable in either quantum gravity or conformal field theory, translating 
+them into the other language, answering them there, and then translating the
+results back into the terms of the original problem. This is particularly useful
+in quantum gravity, where extremely few problems are readily solved, and about
+which very little is known. The next chapter of this thesis concerns one such
+project, and we will now turn to its particulars.
+
