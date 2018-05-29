@@ -5,6 +5,8 @@ ${fname}.pdf: ${fname}.tex \
 	acknowledgments/acknowledgments.tex \
 	intro_chapter/intro_chapter.tex \
 	intro_chapter/intro_chapter.bib \
+	virasoro_chapter/virasoro_chapter.tex \
+	virasoro_chapter/virasoro_chapter.bib \
 	conclusion_chapter/conclusion_chapter.tex \
 	conclusion_chapter/conclusion_chapter.bib \
 	rnw_chapter/rnw_chapter.bib \
@@ -20,6 +22,8 @@ ${fname}.pdf: ${fname}.tex \
 	bibtex ${fname}1-blx
 	bibtex ${fname}2-blx
 	bibtex ${fname}3-blx
+	bibtex ${fname}4-blx
+	#bibtex ${fname}5-blx
 	# Add more if you have more chapters
 	pdflatex ${fname}
 	pdflatex ${fname}
