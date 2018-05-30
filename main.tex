@@ -175,6 +175,12 @@ natbib = true
 \usepackage{relsize}
 \usepackage{epsfig}
 
+\usepackage{appendix}
+\AtBeginEnvironment{subappendices}{%
+\chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendices}
+}
+
 \def\half{{1 \over 2}}
 \def\cn{{\mathcal N}}
 \def\tr{{\rm Tr}}
@@ -309,38 +315,67 @@ Doctor of Philosophy }\\
 %\addtocontents{toc}{\protect\contentsline{chapter}{\protect\numberline{}Table of Contents}{iii}}
 %\addtocontents{toc}{\protect\contentsline{chapter}{\protect\numberline{}List of Tables}{iv}}
 %\addtocontents{toc}{\protect\contentsline{chapter}{\protect\numberline{}List of Figures}{v}}
-\listoftables
+% \listoftables
 \listoffigures
 
 \cleardoublepage % Needed because our intro chapter doesn't really have anything
 \pagenumbering{arabic}
 
-\begin{refsection}[intro_chapter/intro_chapter.bib]
+\begin{refsection}[main.bib]
+
+% \begin{refsection}[intro_chapter/intro_chapter.bib]
 \include{intro_chapter/intro_chapter}
 \cleardoublepage
-\printbibliography[title={References}]
-\end{refsection}
+% \printbibliography[title={References}]
+% \end{refsection}
 
-\begin{refsection}[cft_chapter/cft_chapter.bib]
+% \begin{refsection}[cft_chapter/cft_chapter.bib]
 \include{cft_chapter/cft_chapter}
 \cleardoublepage
-\printbibliography[title={References}]
-\end{refsection}
+% \printbibliography[title={References}]
+% \end{refsection}
 
-\begin{refsection}[virasoro_chapter/virasoro_chapter.bib]
+% \begin{refsection}[virasoro_chapter/virasoro_chapter.bib]
 \include{virasoro_chapter/virasoro_chapter}
 \cleardoublepage
-\printbibliography[title={References}]
-\end{refsection}
+% \printbibliography[title={References}]
+% \end{refsection}
 
-\begin{refsection}[conclusion_chapter/conclusion_chapter.bib]
+\include{truncation_chapter/truncation_chapter}
+\cleardoublepage
+
+% \begin{refsection}[conclusion_chapter/conclusion_chapter.bib]
 \include{conclusion_chapter/conclusion_chapter}
 \cleardoublepage
-\printbibliography[title={References}]
+% \printbibliography[title={References}]
+% \end{refsection}
+
+\addcontentsline{toc}{chapter}{References}
+\printbibliography[title=References]
 \end{refsection}
 
+% \includepdf[pages={-}]{moderncv-2015.pdf}
 
-\includepdf[pages={-}]{moderncv-2015.pdf}
+\cleardoublepage
+\section{Biography}
+
+Charles Hussong was born on July 4th, 1989 in Boston, Massachusetts. Charles was
+homeschooled from age 7 until entering Cornell University as an undergraduate.
+He received a B.A. from Cornell in 2011 with majors in Physics and Mathematics
+and a minor in Asian Studies, and in 2012 entered the Ph.D. program in the
+Physics and Astronomy department at Johns Hopkins University.
+
+Charles was a teaching assistant for introductory physics the entire time he was
+at Hopkins, and was the head teaching assistant for Physics II for Engineers for
+three years, during which the course was changed from a traditional lecture into
+a group-based active learning format. He was the recipient of JHU's 2016 
+Excellence in Teaching Award for graduate teaching assistant.
+
+Charles's research at Hopkins has been in theoretical particle physics, focusing
+on conformal field theories. While he originally worked on the conformal 
+bootstrap, his interests shifted toward numerical analysis like those presented
+in this thesis. He has ultimately decided to follow this interest in numerics
+into a career in software engineering after graduation.
 
 
 \end{document}
