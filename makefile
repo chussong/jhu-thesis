@@ -7,10 +7,10 @@ ${fname}.pdf: ${fname}.tex \
 	intro_chapter/intro_chapter.bib \
 	virasoro_chapter/virasoro_chapter.tex \
 	virasoro_chapter/virasoro_chapter.bib \
+	truncation_chapter/truncation_chapter.tex \
+	truncation_chapter/truncation_chapter.bib \
 	conclusion_chapter/conclusion_chapter.tex \
-	conclusion_chapter/conclusion_chapter.bib \
-	rnw_chapter/rnw_chapter.bib \
-	rnw_chapter/rnw_chapter.Rnw 
+	conclusion_chapter/conclusion_chapter.bib
 	if [ -e ${fname}.aux ]; \
 	then \
 	rm ${fname}.aux; \

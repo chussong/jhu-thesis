@@ -1,5 +1,5 @@
 \chapter{RG Flow from $\phi^4$ Theory to the 3D Ising Model}
-\label{chap:truncation}
+\label{chap:3d}
 
 \emph{Adapted from a paper currently in preparation in collaboration with 
 Nikhil Anand, Emanuel Katz, Zuhair Khandker, and Matthew Walters}
@@ -8,6 +8,61 @@ Nikhil Anand, Emanuel Katz, Zuhair Khandker, and Matthew Walters}
 
 \section{Introduction}
 \label{sec:Intro}
+
+Quantum field theory, while an excellent framework for conceptualizing many of
+the pressing problems in modern physics, provides little guidance in actually
+calculating phenomena outside of the so-called `weakly-coupled' physical regime,
+in which particles are taken to be approximately free and interactions are 
+approximated via Taylor series\cite{ref:peskin}. The terms in this Taylor series
+are usually represented by Feynman diagrams and grow exponentially more numerous
+as orders are added in the interaction parameter; they also become more 
+difficult to calculate. Accordingly, the `summing diagrams' approach to QFT is
+only really useful when the interactions are weak enough that the series 
+converges nicely in the first two or three orders. This is the case for many
+interesting processes, including the electroweak interactions in particle 
+physics, but it is also not true of many others, such as quantum chromodynamics
+(QCD), which models the strong interaction.
+
+The traditional way to investigate strongly-coupled quantum field theories like
+QCD is to quantize spacetime on a lattice, thereby reducing the 
+infinite-dimensional problem to a finite-dimensional one which can be simulated
+on a computer\cite{ref:lattice}. This method changes the objects of study from
+continuum quantum fields to a discrete set of sites -- the field can be 
+reconstructed from the sites, but any variations taking place on a smaller
+length scale than the lattice spacing $a$ become invisible. In the language of
+QFT, this effectively places an energy cutoff at $1/a$, above which all physics
+is lost.
+
+In recent years, a competing procedure for studying strongly-coupled theories
+has emerged, called Hamiltonian truncation\cite{ref:truncation}. The idea is 
+that, rather than discretizing the individual modes of field excitations as a
+lattice does, one will instead discretize the space of possible modes which can
+be included, and then impose some natural cutoff to make this space finite. The
+modes themselves are still treated as exact continuum objects, so this provides
+a line of inquiry which is in some sense orthogonal to that of the lattice. 
+
+If one is to attempt truncation, the first and paramount question is which full
+basis to begin with (and subsequently truncate). Recent approaches have tended
+to start with high-energy CFTs due to their orderly behavior, then add relevant
+operators to the Hamiltonian and renormalize the theory to low 
+energy\cite{ref:zamotrunc}. Because the spectrum of CFT operators is naturally 
+discrete and bounded below in dimension $\Delta$, we can produce a finite basis 
+by simply removing all operators having $\Delta > \Delta_0$ for some cutoff 
+$\Delta_0$. If the CFT is placed on a sphere, this dimension cutoff corresponds 
+to an energy cutoff, so by performing it we are including low-energy operators 
+and excluding high-energy ones. If we then flow the theory to low energy, we 
+expect that these low energy modes will be the most relevant, and therefore low 
+energy phenomena ought to be represented reasonably well by 
+them\cite{ref:matt3d}.
+
+This technique has been successfully used to study QFTs in two dimensions 
+\cite{ref:2d}, but a 3D formulation has not yet materialized. In this chapter,
+we present a complete accounting of the theory necessary to prepare a $\phi^4$
+theory for conformal truncation in 3D, along with a numerical implementation of
+this truncation, which we then use to study the 3D Ising model as a proof of 
+concept. We are able to observe the closing of the mass gap as the coupling 
+strength is increased and correctly reproduce the spectral density of the low
+energy theory.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -30,7 +85,7 @@ relevant operators,
 \be
 S = S_{\CFT} - \lambda \int d^dx \, \Ocal_R(x).
 \ee
-Following the approach presented in \cite{Truncation}, a useful basis for the 
+Following the approach presented in \cite{ref:matt3d}, a useful basis for the 
 Hilbert space of this theory consists of UV eigenstates of the quadratic Casimir 
 of the conformal group,
 \be
@@ -53,7 +108,7 @@ diagonalized numerically, yielding an approximation to the true spectrum of the
 IR QFT.
 
 To define the Hamiltonian, we first need to choose a quantization scheme. As 
-discussed in \cite{Truncation}, we work in lightcone quantization, with the 
+discussed in \cite{ref:matt3d}, we work in lightcone quantization, with the 
 Hilbert space defined on slices of constant lightcone ``time'' 
 $x^+ \equiv \fr{1}{\sqrt{2}}(t+x)$. We thus need to compute matrix elements for 
 the associated lightcone Hamiltonian
@@ -90,11 +145,9 @@ monomials of the form $\prod_i^n P_-^{a_i} P_\perp^{b_i} \Ocal_i$. Indeed, the
 space spanned by the primary operators is complete, and it's possible to perform 
 conformal truncation using them; however, when adding a mass operator to the 
 theory
-
 \be
 M^2 = 2 P_+ P_- = \frac{p_\perp}{p_-}
 \ee
-
 we see that we will encounter an IR divergence in $p_-$ unless every $\Ocal$ in 
 the operator has at least one $p_-$ attached to it. Since we're interested in 
 studying IR dynamics, we would like to remove all of the divergent (and 
@@ -231,24 +284,33 @@ which contains the same dynamical information as the spectral density.
 \section{Discussion}
 \label{sec:Discussion}
 
+This project is still in the final debugging stages, but we expect it to be
+numerically correct in a matter of days and have illustrative plots shortly
+thereafter. Here is a visualization of the Hamiltonian created by the truncation
+methods of this chapter:
+
+\begin{figure}
+\centering
+\includegraphics[width=0.75\textwidth]{truncation_chapter/hamiltonian}	
+\caption[Visualization of truncated Hamiltonian]{This is the $P_\perp$-even 
+    Hamiltonian produced with $\Delta_\mathrm{max} = 10$, 
+    $k_\mathrm{max} = 100$, and $m^2 = \Lambda = \lambda = 1$. Warm colors are
+    positive entries and cool colors are negative entries. The $n \to n+2$ 
+    entries off of the block diagonal are jagged because these interactions are
+    kinematically prohibited when the low-$n$ state has more energy than the
+    high-$n$ state, which is the half of the block closer to the diagonal.}
+\label{fig:TimelikeSeparation}
+\end{figure}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
  
 
-
-\section*{Acknowledgments}    
-
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\appendix
+% \appendix
+\begin{subappendices}
 
 \section{Constructing the Basis of Dirichlet States}
 \label{sec:ConstructingBasis}
@@ -269,7 +331,7 @@ It is important to note that the size of the Dirichlet basis is smaller than tha
 
 \subsection{General Case} While the above method for constructing the Dirichlet basis can be generalized, in this work we will explicitly construct the basis of Dirichlet states from their associated inner product. This basis is identical to what is obtained by starting with Casimir eigenstates and demanding that they satisfy Dirichlet boundary conditions, but it is computationally more efficient to implement. We leave the details of our numerical algorithm to section \ref{sec:code}; below we will derive the Dirichlet inner product and explain the symmetrization procedure to obtain our final basis states.
 
-{\color{red} \textbf{Nikhil: I just copied the numerical factors at the intermediate steps in this derivation from my note, but I need to make sure that they all agree w what's in our final expressions.}}Our Dirichlet states take the form \begin{equation}
+Our Dirichlet states take the form \begin{equation}
 	\begin{aligned}
 		\ket{\tilde{\CO};\vec{P}, k} &= \int_0^{1} d\mu^2 g_k(\mu) \int \frac{d^2p_1 \dotsb d^2p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \ket{p_1, \dots, p_n},
 	\end{aligned}
@@ -294,7 +356,7 @@ Using the equations of motion and the choice of our reference frame of $P_\bot =
 	x_i \equiv \frac{p_{i-}}{P_-},\quad\quad\quad\quad\quad\quad y_i \equiv \frac{p_{i\bot}}{\mu}, \label{dimlessvars}
 \end{equation} so that the wavefunctions have a scaling set by \begin{equation}
 	\tilde{F}_{\CO}(p) = \mu^{|\lamvec_\bot|} P_-^{n+|\lamvec_-|} x_1 \dotsb x_n \bar{F}_{\CO}(x,y),
-\end{equation} where $|\lamvec_\bot|$ counts the number of $P_\bot$ derivatives while $|\lamvec_-|$ counts the number of $P_-$ derivatives modulo the overall Dirichlet prefactor that comes from $p_{1-} \dotsb p_{n-}$. In practice, we will not need to keep track of these overall scaling factors of $P_-$ and $\mu$ since we will normalize our states such that these overall factors are canceled in the final inner product expression {{\color{red} \textbf{Could've presented this more clearly... but can return to this.}}. Choosing integration variables \begin{equation}
+\end{equation} where $|\lamvec_\bot|$ counts the number of $P_\bot$ derivatives while $|\lamvec_-|$ counts the number of $P_-$ derivatives modulo the overall Dirichlet prefactor that comes from $p_{1-} \dotsb p_{n-}$. In practice, we will not need to keep track of these overall scaling factors of $P_-$ and $\mu$ since we will normalize our states such that these overall factors are canceled in the final inner product expression. Choosing integration variables \begin{equation}
 		\begin{aligned}
 			x_1 &= (1-z_1)(1-z_2)(1-z_3) \dotsb (1-z_{n-1}), \\
 			x_2 &= \quad\quad\,\,\, z_1(1-z_2)(1-z_3) \dotsb (1-z_{n-1}), \\
@@ -314,7 +376,7 @@ Using the equations of motion and the choice of our reference frame of $P_\bot =
 		\begin{aligned}
 			\delta^3\left(\sum_i p_i - P \right) \to \frac{2}{\mu^3} \delta \left( \sum_i^{n-1} \tilde{y}_i^2 - 1 \right).
 		\end{aligned}
-	\end{equation} {\color{red}\textbf{explain why we don't care about factors of $\mu$}...} Introducing angular variables for the remaining $\tilde{y}$ variables to implement this constraint \begin{equation}
+	\end{equation} Introducing angular variables for the remaining $\tilde{y}$ variables to implement this constraint \begin{equation}
 		\begin{aligned}
 			\tilde{y}_1 &= \sin \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-2}, \\
 			\tilde{y}_2 &= \cos \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-2}, \\
@@ -328,7 +390,7 @@ Using the equations of motion and the choice of our reference frame of $P_\bot =
 		\end{aligned}
 	\end{equation} with 
 		\begin{empheq}[box=\fbox]{align}
-			\Mcal^{\textrm{(inner)}}_{k, k'; \Ocal, \Ocal'} = \delta_{k, k'} \frac{1}{n! 2^n (2\pi)^{2n-3}} &\int dz_1 \dotsb dz_{n-1} \left( \prod_i z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i-1} \right) \nonumber \\
+                    \Mcal^{\textrm{(inner)}}_{k, k'; \Ocal, \Ocal'} = &\delta_{k, k'} \frac{1}{n! 2^n (2\pi)^{2n-3}} \int dz_1 \dotsb dz_{n-1} \left( \prod_i z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i-1} \right) \nonumber \\
 			&\times \int d\theta_1 \dotsb d\theta_{n-2} \left( \prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal'}(z,\theta). \label{inner}
 		\end{empheq}
 
@@ -342,8 +404,6 @@ To obtain our final Dirichlet states, we tabulate a list of Dirichlet monomials 
 
 \section{Matrix Elements and Operator Overlaps}
 \label{sec:MatrixElements}
-
-{\color{red}\textbf{Nikhil: not sure if we wanted to use the same notation from the 3D paper. I used $\ket{\Ocal; \vec{P}, \mu}$ to label our basis states, instead of $\ket{\Ccal, \ell; \vec{P}, \mu}$, to stay consistent with Matrix Formulas.pdf.}}
 
 In this section, we compute the matrix elements between the invariant mass $M^2$ and the Dircichlet basis states. The mass operator can be written in terms of momentum generators as \begin{equation}
 	M^2 = 2P_+ P_- - P_\bot^2.
@@ -485,13 +545,18 @@ basis.
 
 Our computation begins with a naive list of all Dirichlet monomials having total 
 scaling dimension below some cutoff $\Delta$. We intend to use this as a basis
-for all states below the cutoff, but since it's vastly overcomplete (see
-{\red wherever this is discussed}) we must first eliminate all of the redundant
-monomials, the first step of which is to compute the Gram matrix containing the
-inner products of all of the monomials in the naive list with all of the others.
-Before computing the Gram matrix, we normalize the input monomials so that it's
-easier to distinguish floating point epsilons from inner products which just 
-happen to be small.
+for all states below the cutoff, but since it's vastly overcomplete, we must 
+first eliminate all of the redundant monomials, the first step of which is to 
+compute the Gram matrix containing the inner products of all of the monomials in 
+the naive list with all of the others. Before computing the Gram matrix, we 
+normalize the input monomials so that it's easier to distinguish floating point 
+epsilons from inner products which just happen to be small, and we also separate
+the states with an even number of $P_\perp$ derivatives from those with an odd
+number: the former are always orthogonal to the latter, and their matrix 
+elements with each other are always zero, so we can treat both cases separately.
+Since matrix algorithms generally have complexity of roughly $O(N^3)$, any
+simplification which breaks the overall matrix up into invariant subspaces is 
+tremendously advantageous.
 
 With the Gram matrix in hand, there are a number of ways to produce an 
 orthogonal basis from the overcomplete one, the simplest of them being a QR
@@ -551,58 +616,62 @@ We compute $M$ block by block, first getting an overall factor $a$ by doing all
 of the integrals not involving $\mu^2$, then computing a discretization matrix 
 $D$ and multiplying it by $a$. The entry $D_{ij}$ contains the integral of all
 $\mu^2$ factors across the appropriate window:
-
 \begin{equation}
     D_{ij} = \int_{i/N_k}^{(i+1)/N_k} d\mu^2 \int_{j/N_k}^{(j+1)/N_k} d\mu'^2
              f(\mu^2, \mu'^2).
+    \label{eq:discMatrix}
 \end{equation}
-
 For the kinetic and mass matrices, $f(\mu^2, \mu'^2)$ is just proportional to
 $\delta(\mu^2 - \mu'^2)$, while for the interaction matrices it's close to a 
 polynomial in $\mu^2/\mu'^2$. We memoized each discretization matrix in a hash
 table keyed by $f(\mu^2, \mu'^2)$, so a matrix element calculation can be 
 represented with the following pseudocode:
-
 \begin{verbatim}
 for each unique permutation of m and m':
-    do integrals to get {numerical factor a} and {list of which f appear};
-    for each f which appears:
-        answer += a * D(f);
-return answer * degeneracy;
+  do integrals to get {numerical factor a} and {list of which f appear}
+  for each f which appears:
+    answer += a * D(f)
+return answer * degeneracy
 \end{verbatim}
-
 where the degeneracy is the number of permutations which are indistinguishable
 from a given unique permutation; which is of course the same for every unique 
-permutation so it becomes an overall factor.
+permutation so it becomes an overall factor. Note that if the integrals in 
+\eqref{eq:discMatrix} can be done analytically, it's possible to program in the
+answers as a function of a given set of input exponents. This is fantastically
+faster and more precise than a numerical integration, being able to quickly get
+10 or 15 decimal digits of precision while the latter struggles to get 5.
 
 Once all of the minimal basis matrices $M$ have been computed, everything else
 is just standard matrix algebra. In particular, the Hamiltonian is just
-
 \begin{equation}
     \sum_i P^T M_i P,
 \end{equation}
-
 summed over the kinetic, mass, and interaction terms. Interesting quantities
-like eigenvalues can just be computed using ordinary matrix libraries, taking
-care to take advantage of a few important simplifications. First, the matrix is
-very `block sparse', i.e. it is a matrix sparsely populated with dense blocks:
-the kinetic and mass terms are block diagonal by particle number, while the 
-interaction is block banded, with nonzero blocks 2 particle numbers above and 2 
-particle numbers below the diagonal. We used this block sparsity together with
-the fact that the Hamiltonian is symmetric to {\red whatever we end up doing.
-Cholesky factorization?}.
+like eigenvalues can then be computed using ordinary matrix libraries; one might
+think that some special care is required to take advantage of various properties
+of the matrix, for instance the fact that it is ``block sparse'' in that the
+block of $n$-particle states is coupled only to itself and the blocks of $n-2$-
+and $n+2$-particle states. However, because the bulk of the states lie in the
+middle of the particle number range, this actually includes quite a large 
+proportion of the possible pairs, and in fact upon inspection one sees that the
+matrix is about half full at $\Delta_\mathrm{max} = 10$. If 
+$\Delta_\mathrm{max}$ were increased further, the matrix would become 
+increasingly sparse (technically block sparse), but we do not expect that it 
+would be worth considering sparse methods such as the Lanczos algorithm until 
+$\Delta_\mathrm{max} = 15$ or higher.
 
 Using the double linear algebra formulation and aggressive memoization of all
-the repeated work we could find, we were able to {\red performance metric here.
-Is it good enough, or would we like to keep improving it? If we don't need a
-cluster, how well could we have done on one?}
+the repeated work we could find, we were able to produce finished matrices up to
+$\Delta_\mathrm{max} = 10, k_\mathrm{max} = 100$ on an ordinary desktop computer 
+in around two minutes. We believe that we will be able to solve everything up to 
+around $\Delta_\mathrm{max} = 15$ before the resulting matrices become too large 
+to deal with; this is our main obstacle, since $k_\mathrm{max}$ must be kept
+high to maintain good convergence. If $k_\mathrm{max}$ is kept at 100, the final
+matrices become unwieldy once more than about 100 orthogonal states are 
+introduced, which happens at around $\Delta_\mathrm{max} = 15$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-\bibliographystyle{utphys}
-%\bibliography{Bib2DIsing}
-
-\end{document}
+\end{subappendices}
