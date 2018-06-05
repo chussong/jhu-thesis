@@ -53,7 +53,8 @@ states must behave in a particular way under infinitesimal conformal
 transformations, such as the infinitesimal dilatation $D$:
 
 \begin{equation}
-    D {\cal O}_\Delta = \Delta {\cal O}_\Delta.
+    \left[ D, {\cal O}_\Delta \right] 
+    = (\Delta + x^\mu \partial_\mu) {\cal O}_\Delta.
 \end{equation}
 
 $\Delta$, the dilatation eigenvalue, is known as the \emph{[scaling] dimension}
@@ -80,46 +81,58 @@ conformal symmetry, it takes a central role in the CFT world: since the two
 scalar operators ${\cal O}_\Delta$ and ${\cal O}_{\Delta'}$ have definite
 behavior under dilatations and their correlation function must be a scalar due
 to Poincar\'e invariance, we can make the following conclusion:
-
 \begin{align}
     \left \langle {\cal O}_\Delta(ax) {\cal O}_{\Delta'}(ax') \right \rangle
     &= \left \langle a^{-\Delta} {\cal O}_\Delta(x) 
                     a^{-\Delta'} {\cal O}_{\Delta'}(x') \right \rangle \\
     &= f((ax - ax')^2) = a^{-\Delta - \Delta'} f((x - x')^2)
+    \label{eq:twopoint}
 \end{align}
-
 so the correlation function of two conformal operators is another conformal
 operator whose scaling dimension is the sum of the two constituent ones. In a 
 non-interacting theory, the new operator is the simplest possible one:
-
 \begin{equation}
-    f((x - x')^2) = \frac{C(\Delta, \Delta')}{(x - x')^{\Delta + \Delta'}},
+    f((x - x')^2) = \frac{C(\Delta) \delta_{\Delta \Delta'}}{(x - x')^{2\Delta}}
+    \label{eq:twopointfree}
 \end{equation}
-
-where $C(\Delta, \Delta')$ is some constant number; we can get rid of this as
-well by redefining 
-${\cal O}_\Delta \to {\cal O}_\Delta / \sqrt{C_{\Delta \Delta}}$, which is 
+where $C(\Delta)$ is some constant number; we can get rid of this as well by 
+redefining ${\cal O}_\Delta \to {\cal O}_\Delta / \sqrt{C_{\Delta}}$, which is 
 always done in practice.
 
-This argument is closely related to the idea of the \emph{operator product
+This procedure is closely related to that of the \emph{operator product
 expansion}, or OPE, which says that the product of two operators located very
 near each other can be represented as a single operator of its own, which can in
 turn be represented as an expansion in (i.e. sum over) other operators in the
-theory:
-
+theory with some constant coefficients $\lambda$:
 \begin{equation}
     {\cal O}_A {\cal O}_B = {\cal O}_\mathrm{complicated} 
-    = \sum_i {\cal O}_{i,\mathrm{simple}}
+    = \sum_i \lambda_{A B i} {\cal O}_{i,\mathrm{simple}}.
 \end{equation}
-
 Note the lack of brackets: this is not a statement about correlation functions
 of operators, but rather one about literally expressing the operators themselves
-in a new way. This is actually a true statement in ordinary (non-conformal) 
-QFT\cite{Weinberg:1995mt}, but it generally only converges at extremely short 
-distances; in a CFT, since we can shrink space to put any two operators 
-arbitrarily close to each other, the OPE converges for any pair of operators as 
-long as there isn't anything between them which would prevent them from being 
-shrunk together\cite{Kaplan:cftnotes}.
+in a new way; \eqref{eq:twopoint} can be recovered by placing brackets around
+the resulting expression, causing everything except the identity 
+\eqref{eq:twopointfree} to vanish because conformal symmetry forbids one-point
+expectation values for operators.
+
+Once we know that it's possible to replace pairs of operators by their OPE, a
+natural next question is ``does this mean that any combination of arbitrarily
+many operators can be reduced to a sum over single ones?'' The answer is yes,
+and it turns out there's a great deal one can say about these sums. Consider a
+4-point correlation function
+\begin{equation}
+    \left \langle {\cal O}_A {\cal O}_B {\cal O}_C {\cal O}_D \right \rangle
+    = \sum_i \sum_j \lambda_{A B i} \lambda_{C D j} \left \langle {\cal O}_i
+    {\cal O}_j \right \rangle.
+\end{equation}
+The $\left \langle {\cal O}_i {\cal O}_j \right \rangle$ above are called
+\emph{conformal blocks} and are fixed by conformal symmetry to always be the 
+same for a given ${\cal O}_i$ and ${\cal O}_j$, so if a complete set can be
+characterized, they can be used to express correlation functions of any set of
+four operators (and, in principle, arbitrarily large correlation functions as 
+well). In chapter \ref{chap:bh} we numerically characterize the 2-dimensional
+conformal blocks and then build four-operator states representing black hole
+dynamics with them.
 
 \section{AdS/CFT Holography}
 \label{sec:adscft}
@@ -130,14 +143,14 @@ be applied to superficially unrelated problems in quantum gravity. This is due
 to the AdS/CFT Correspondence, which says that states in a conformal field
 theory are exactly dual to states in a theory of quantum gravity in anti-de 
 Sitter spacetime, the maximally symmetric spacetime with a negative cosmological
-constant. The correspondence is such that any dynamic process on either side 
-must have a dual process on the other side, which is itself a perfectly natural 
-process in its own domain. Crucially, there is no sense in which one of these 
-processes is `real' and the other is an `image' of it -- they are both valid 
-independently, and neither side can intrinsically be taken to be more 
-fundamental than the other. The two sides are descriptions of the same thing in
-two different languages: words, inflection, and even the structure of the 
-sentences may be totally different, but they're still talking about the same
+constant\cite{Maldacena}. The correspondence is such that any dynamic process on 
+either side must have a dual process on the other side, which is itself a 
+perfectly natural process in its own domain. Crucially, there is no sense in 
+which one of these processes is `real' and the other is an `image' of it -- they 
+are both valid independently, and neither side can intrinsically be taken to be 
+more fundamental than the other. The two sides are descriptions of the same 
+thing in two different languages: words, inflection, and even the structure of 
+the sentences may be totally different, but they're still talking about the same
 object and are capable in principle of expressing all the same ideas about it.
 
 Broadly speaking, research into AdS/CFT tends to focus on taking problems which 

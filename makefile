@@ -20,15 +20,9 @@ ${fname}.pdf: ${fname}.tex \
 	pdflatex ${fname}
 	bibtex ${fname}
 	bibtex ${fname}1-blx
-	#bibtex ${fname}2-blx
-	#bibtex ${fname}3-blx
-	#bibtex ${fname}4-blx
-	#bibtex ${fname}5-blx
-	# Add more if you have more chapters
 	pdflatex ${fname}
 	pdflatex ${fname}
-	cp ${fname}.pdf PhD_Thesis.pdf
-	# open PhD_Thesis.pdf
+	cp ${fname}.pdf charles_hussong_thesis.pdf
 clean:
 	if [ -e ${fname}.aux ]; \
 	then \

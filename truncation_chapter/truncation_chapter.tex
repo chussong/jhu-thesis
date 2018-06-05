@@ -284,25 +284,45 @@ which contains the same dynamical information as the spectral density.
 \section{Discussion}
 \label{sec:Discussion}
 
-This project is still in the final debugging stages, but we expect it to be
-numerically correct in a matter of days and have illustrative plots shortly
-thereafter. Here is a visualization of the Hamiltonian created by the truncation
-methods of this chapter:
+This project is still in the final debugging stages, but we believe it to be
+numerically correct and are working on producing illustrative plots now. Figure
+\ref{fig:hamiltonian} gives a visualization of the Hamiltonian created by the 
+truncation methods of this chapter.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.75\textwidth]{truncation_chapter/hamiltonian}	
+\includegraphics[width=0.9\textwidth]{truncation_chapter/hamiltonian}	
 \caption[Visualization of truncated Hamiltonian]{This is the $P_\perp$-even 
-    Hamiltonian produced with $\Delta_\mathrm{max} = 10$, 
+    Hamiltonian produced with $\Delta_\mathrm{max} = 11$, 
     $k_\mathrm{max} = 100$, and $m^2 = \Lambda = \lambda = 1$. Warm colors are
-    positive entries and cool colors are negative entries. The $n \to n+2$ 
-    entries off of the block diagonal are jagged because these interactions are
-    kinematically prohibited when the low-$n$ state has more energy than the
-    high-$n$ state, which is the half of the block closer to the diagonal.}
-\label{fig:TimelikeSeparation}
+    positive entries and cool colors are negative entries, with saturation 
+    indicating the magnitude. The $n \to n+2$ entries outside of the diagonal
+    blocks are jagged because these interactions are kinematically prohibited 
+    when the low-$n$ state has more energy than the high-$n$ state, which is the
+    half of the block closer to the diagonal.}
+\label{fig:hamiltonian}
 \end{figure}
 
+In order to demonstrate the correctness of our truncation method, we can look at
+the closing of the Ising model's mass gap as the strength of the deformation's 
+coupling $\lambda$ is increased. This can be seen by finding the eigenvalues of 
+the Hamiltonian and taking the lowest one -- this will be the mass of the 
+1-particle state, which starts at a finite value and drops to 0 (along with the 
+other states) as the mass gap closes. This is shown in figure \ref{fig:massgap}, 
+and the observed behavior seems consistent with that seen in 2D and less 
+comprehensive studies of 3D.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth]{truncation_chapter/massgap}	
+\caption[Closing of the Ising model mass gap as a function of $\lambda$ for 
+    different $k_\mathrm{max}$]{This shows the effective mass of the 
+    single-particle state as a function of the interaction coupling $\lambda$. 
+    Each of these is at $\Delta_\mathrm{max} = 8, m = 1, \Lambda = 20$, but 
+    $k_\mathrm{max}$ is varied between 20 and 200, appearing to approach an 
+    asymptotic `correct' value as $k_\mathrm{max} \to \infty$.} 
+\label{fig:massgap}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
