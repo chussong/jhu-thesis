@@ -140,7 +140,7 @@ dynamics with them.
 In addition to being used to describe systems which are themselves conformally
 symmetric (or perhaps merely approximately so), conformal field theory can also
 be applied to superficially unrelated problems in quantum gravity. This is due
-to the AdS/CFT Correspondence, which says that states in a conformal field
+to the AdS/CFT Correspondence, which conjectures that states in a conformal field
 theory are exactly dual to states in a theory of quantum gravity in anti-de 
 Sitter spacetime, the maximally symmetric spacetime with a negative cosmological
 constant\cite{Maldacena}. The correspondence is such that any dynamic process on 
@@ -153,11 +153,90 @@ thing in two different languages: words, inflection, and even the structure of
 the sentences may be totally different, but they're still talking about the same
 object and are capable in principle of expressing all the same ideas about it.
 
-Broadly speaking, research into AdS/CFT tends to focus on taking problems which 
-are intractable in either quantum gravity or conformal field theory, translating 
-them into the other language, answering them there, and then translating the
-results back into the terms of the original problem. This is particularly useful
-in quantum gravity, where extremely few problems are readily solved, and about
-which very little is known. The next chapter of this thesis concerns one such
-project, and we will now turn to its particulars.
+There is no generic proof of the AdS/CFT correspondence, but it has been 
+extensively `tested' in the sense that it has been used to approach many 
+complicated problems in ways which have produced reasonable (or known-true) 
+results\cite{Polchinski:TASI}. Furthermore, a number of simple quantities can be
+explicitly shown to be equivalent -- consider $\mathrm{AdS}_{d+1}$ in 
+compactified global coordinates, which looks like a cylinder (figure 
+\ref{fig:ads_cyl}) with the metric
+\begin{equation}
+    ds^2 = \frac{1}{\cos\rho} \left( -dt^2 + L^2 d\rho^2 + L^2 \sin^2\rho 
+                                     d\Omega^2_{d-1} \right)
+\end{equation}
+where $t$ is an infinite temporal coordinate, $\rho$ is a compact spatial 
+coordinate running from $0$ to $\pi/2$, and $L$ is a constant physical length 
+scale which is a property of this particular instantiation of AdS.
+
+The reason for using the compactified coordinates is apparent if one considers
+the null geodesics of the spacetime: from the metric, we see immediately that 
+such a geodesic in the $+t$ and $+\rho$ directions will follow a path given by 
+$\rho(t) = t/L$, and will therefore reach $\rho = \pi/2$ in finite coordinate 
+time. Spatial infinity in AdS is thus causally connected to the interior, making
+it sensible to compute correlations between so-called `bulk' operators on the
+$d+1$-dimensional interior and `boundary' operators on the $d$-dimensional 
+surface at spatial infinity.
+
+As an explicit example of an exact correspondence, consider a free bulk scalar 
+field $\phi$ with mass $M$. We will write this field in so-called Poincar\'e
+coordinates, which cover a wedge-shaped patch of AdS (see figure 
+\ref{fig:ads_cyl}):
+\begin{equation}
+    ds^2 = \frac{L^2}{z^2} \left( -dt^2 + dz^2 + \sum_i^{d-1} dx_i^2 \right)
+\end{equation}
+where $z \in (0, \infty)$ and $z \to 0$ is the wall of the cylinder 
+($z \to \infty$ is the single point on the boundary on the far side); the other
+coordinates are in $(-\infty, \infty)$, just like the usual ones for flat 
+spacetime; in particular, at constant $z$, this is just Minkowski space with all
+distances scaled by $L/z$.
+
+$\phi$ obeys the Klein-Gordon equation; since the metric is Minkowski at 
+constant $z$, we can use Minkowski momentum space for all directions except $z$.
+If the momenta in these non-$z$ directions is $k^\mu$, the Klein-Gordon equation
+becomes
+\begin{equation}
+    \box \phi - M^2 \phi = z^{1+d} \partial_z z^{1-d} \partial_z \phi 
+                         - (M^2 + k_\mu k^\mu z^2) \phi = 0
+\end{equation}
+The solutions to this are Bessel functions, producing mode functions of the form
+\begin{equation}
+    \phi(x, z) = e^{i k_\mu x^\mu} z^\frac{d}{2} J_\nu (\kappa z)
+\end{equation}
+where $\nu = \sqrt{\frac{d^2}{4} + M^2}$.
+
+Now, when we bring this field to the boundary at $z \to 0$, the leading $z$
+behavior becomes the power law $z^{\frac{d}{2} + \nu}$. If we want to find a
+conformal operator corresponding to this field, the natural next question is 
+``if we ignore this $z$ dependence, is the rest of the field conformal?'' It 
+turns out that the answer is yes: because the original field is a scalar under 
+the AdS isometries, if we take the transformation $x, z \to ax, az$, $\phi$ 
+remains the same, which means `$\phi$ ignoring the $z$ dependence', i.e. 
+$\lim_{z \to 0} z^{-\frac{d}{2} - \nu} \phi(x, z)$, is rescaled by 
+$a^{-\frac{d}{2} - \nu}$. This is precisely the required dilatation behavior for
+a conformal operator, so by doing this we have produced an ${\cal O}_\Delta$
+with $\Delta = \frac{d}{2} + \nu$. This means that any free massive field in
+$\mathrm{AdS}_{d+1}$ can be placed in exact correspondence with a particular
+operator in $\mathrm{CFT}_d$, and the converse is also possible by merely 
+attaching the Bessel function!
+
+Unfortunately, this so-called `dictionary' between fields and operators relies
+on the free equations of motion holding, so it's not strictly true in 
+interacting theories, though it holds up to calculable corrections in 
+weakly-interacting theories\cite{Kaplan:cftnotes}. The conjecture of the AdS/CFT
+correspondence is substantially stronger than this, though: it is that 
+\emph{any} state in \emph{any} $\mathrm{AdS}_{d+1}$ can be expressed in terms of
+operators in a $\mathrm{CFT}_d$, and vice versa. While the simple proof only
+works for free theories, time and again we find that observables in general
+theories (particularly $N$-point correlation functions) are in exact 
+correspondence with those of their dual theory, so the vast preponderance of 
+circumstantial evidence suggests that the more general statement of the 
+correspondence is also true\cite{Polchinski:TASI}.
+
+Broadly speaking, practical research into AdS/CFT tends to focus on taking 
+problems which are intractable in either quantum gravity or conformal field 
+theory, translating them into the other language, answering them there, and then
+translating the results back into the terms of the original problem. This is 
+particularly useful in quantum gravity, where extremely few problems are readily 
+solved, and about which very little is known. The next chapter of this thesis 
+concerns one such project, and we will now turn to its particulars.
 
