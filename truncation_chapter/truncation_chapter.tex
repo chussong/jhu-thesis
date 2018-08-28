@@ -130,32 +130,165 @@ coefficients give us the Hamiltonian matrix elements.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\subsection{3D Scalar Field Theory}
+
+Our starting point is a UV CFT of a free scalar field $\phi$ with the Lagrangian 
+\begin{equation}
+    \begin{aligned}
+        \mathcal{L}_{\textrm{CFT}} = \frac{1}{2} : \partial_\mu \phi \partial^\mu \phi :,
+    \end{aligned}
+\end{equation} 
+where the notation $: \mathcal{O} : $ indicates that the operator should be 
+normal-ordered. We will work in $2+1$ dimensions in lightcone coordinates, which 
+are defined by $x^{\pm} \equiv \frac{1}{\sqrt{2}}(t \pm x)$, as well as the 
+tranverse direction $x^\bot$. The coordinate $x^+$ is treated as the ``time'' 
+direction and the metric is given by 
+\begin{equation}
+    ds^2 = 2 dx^+ dx^- - dx^{\bot 2}.
+\end{equation} 
+The associated momenta are given by $p_\mu = i \partial_\mu$, from which we can 
+determine the Lorentz invariant quantity 
+\begin{equation}
+    p^2 = 2 p_+ p_- - p_\bot^2.
+\end{equation}
+
+Our goal will be to determine the IR spectrum and eigenstates by diagonalizing 
+the invariant mass-squared operator in a frame with total momentum $\vec{P}$. 
+In terms of the momentum generators, this means diagonalizing 
+\begin{equation}
+    M^2 = 2 P_+ P_- - P_\bot^2.
+\end{equation} 
+We will diagonalize this operator on a basis of Casimir eigenstates associated 
+with the UV free scalar. The free scalar field can be expanded in terms of its 
+mode functions 
+\begin{equation}
+    \phi(x) = \int \frac{d^2 p}{(2\pi)^2 \sqrt{2 p_-}} \left( e^{-i p \cdot x} a_p + e^{i p \cdot x} a^\dagg_p \right),
+\end{equation} 
+where 
+\begin{equation}
+    \left[ a_p, a^\dagg_q \right] = (2\pi)^2 \delta(p-q).
+\end{equation} 
+This expansion for $\phi(x)$ leads to an expression for the lightcone 
+Hamiltonian $P_+$ (as well as the other lightcone momenta) in terms of 
+oscillator modes, as we will see momentarily. We will then diagonalize the 
+mass-squared operator by similarly expressing our complete basis states in terms 
+of mode functions, truncating at some maximum Casimir eigenvalue to obtain a 
+finite-dimensional matrix.
+
+After expanding in oscillator modes, the CFT Hamiltonian takes the form 
+\begin{equation}
+    \begin{aligned}
+        P_+^{(\textrm{CFT})} = \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{p_\bot^2}{2p_-}.
+    \end{aligned}
+\end{equation}
+The deformations to the UV CFT that we will study are the mass term and a 
+quartic interaction, given by 
+\begin{equation}
+    \delta \mathcal{L} = - \frac{1}{2}m^2 \phi^2 - \frac{1}{4!} \lambda \phi^4.
+\end{equation} 
+This results in the following corrections to the lightcone Hamiltonian, 
+respectively: 
+\begin{equation}
+    \begin{aligned}
+        \delta P_+^{(m)} &= \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{m^2}{2p_-}, \label{massdeformation}
+    \end{aligned}
+\end{equation} 
+and 
+\begin{equation}
+    \begin{aligned}
+        \delta P_+^{(\lambda)} = \frac{\lambda}{24} \int \frac{d^2p d^2 q d^2 k}{(2\pi)^6 \sqrt{8 p_- q_- k_-}} \left( \frac{4 a^\dagg_p a^\dagg_q a^\dagg_k a_{p+q+k}}{\sqrt{2(p_- + q_- + k_-)}} + \textrm{ h.c. } + \frac{6 a^\dagg_p a^\dagg_q a_k a_{p+q-k}}{\sqrt{2(p_- + q_- - k_-)}} \right).
+    \end{aligned}
+\end{equation}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Conformal Basis for 3D Scalar Fields}
 
-We work in 3D lightcone coordinates $x^+ \equiv (x + t)/\sqrt{2}$, 
-$x^- \equiv (x - t)/\sqrt{2}$, and $x^\perp \equiv y$. Since we are quantizing 
-along the $x^+$ direction, $\partial_+$ is the Hamiltonian and $P_+$ is the 
-energy in momentum space. 
+The conformal truncation prescription amounts to diagonalizing $M^2$ on a basis 
+of Casimir eigenstates. In this section, we will explain how to construct these 
+eigenstates and how the basis is modified in the presence of the mass 
+deformation.
 
-The most obvious basis for the states of the UV CFT would be the conformal 
-primary operators; since matrix elements will be summed over all permutations, 
-these operators can be expressed in momentum space as superpositions of ordered 
-monomials of the form $\prod_i^n P_-^{a_i} P_\perp^{b_i} \Ocal_i$. Indeed, the 
-space spanned by the primary operators is complete, and it's possible to perform 
-conformal truncation using them; however, when adding a mass operator to the 
-theory
-\be
-M^2 = 2 P_+ P_- = \frac{p_\perp}{p_-}
-\ee
-we see that we will encounter an IR divergence in $p_-$ unless every $\Ocal$ in 
-the operator has at least one $p_-$ attached to it. Since we're interested in 
-studying IR dynamics, we would like to remove all of the divergent (and 
-therefore lifted-out and irrelevant) modes from our basis; the simplest way to 
-do this is by considering only operators with at least one $p_-$ on each 
-$\Ocal$. Since this is effectively enforcing a Dirichlet boundary condition, we 
-refer to these as \emph{Dirichlet operators} and the states created by them as 
-\emph{Dirichlet states}.
+Our starting point in the UV is the free massless scalar field, and so our basis 
+is comprised of primary (and descendant) operators of the free scalar. In order 
+to construct these operators, we have the following building blocks 
+\begin{equation}
+    \phi, \quad\quad\quad \partial_+ \phi, \quad\quad\quad \partial_-\phi, \quad\quad\quad \partial_\bot\phi. \label{basisbuildingblocks}
+\end{equation} 
+The equations of motion imply that
+$\partial_+ \phi = \frac{\partial_\bot^2}{2 \partial_-} \phi$, so we can focus 
+on only the $\partial_- \phi$ and $\partial_\bot \phi$ building blocks.
+
+The idea is to construct a basis of Casimir eigenstates from these building 
+blocks. In previous work, we started with the ``all-minus'' subset of the basis, 
+comprised of operators built only from $\phi$ and $\partial_-$ derivatives. 
+Then, we obtained the other states by acting on the all-minus states with the 
+Pauli-Lubanski operator.
+
+Our approach in this work will be more pedestrian. We will simply start with the 
+building blocks eq. \eqref{basisbuildingblocks} and construct the linear 
+combinations that are primary with a brute-force algorithm. These operators take 
+the form 
+\begin{equation}
+    \mathcal{O}(x) = \sum_{\{ m_n \}} C^{\mathcal{O}}_{\{m_n\}} \partial^{m_1} \phi(x) \partial^{m_2} \phi(x) \dotsb \partial^{m_n} \phi(x),
+\end{equation} 
+for some yet-to-be-determined coefficients $C^{\mathcal{O}}_{\{m_n\}}$. We can 
+express these operators in momentum space by inserting a complete set of states: 
+\begin{equation}
+    \begin{aligned}
+        | \mathcal{O} ; \vec{P}, \mu \rangle &= \frac{1}{n!} \int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} \langle p_1, \dots, p_n | \mathcal{O} ;\vec{P}, \mu \rangle | p_1, \dots, p_n \rangle \\
+        &= \frac{1}{n!}\int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left(\sum_i p_i - P \right) F_{\mathcal{O}}(p)| p_1, \dots, p_n \rangle, \label{contstatedef}
+    \end{aligned}
+\end{equation} 
+where the wavefunction $ F_{\mathcal{O}}(p)| p_1, \dots, p_n \rangle$ is just 
+given by the overlap of the operator with a Fock space state 
+\begin{equation}
+    F_{\mathcal{O}}(p) = \langle \mathcal{O}(0) | p_1, \dots, p_n \rangle = \sum_{\{ m_n \}} C^{\mathcal{O}}_{\{m_n\}} p_1^{m_1} \dotsb p_n^{m_n}.
+\end{equation} 
+We can therefore focus on determining these polynomials, which are simply the 
+Fourier transforms of local operators.
+
+In order to determine these wavefunctions, we must find the operators that are 
+annihilated by the special conformal transformations $K_\mu$. As differential 
+operators acting on a generic monomial $P_+^a P_-^b P_\bot^c \phi$, they take 
+the form 
+\begin{equation}
+    \begin{aligned}
+        K_- &= 2P_+ \frac{\partial^2}{\partial P_+^2} + 2 P_\bot \frac{\partial^2}{\partial P_+ \partial P_\bot} + 2\Delta_\phi \frac{\partial}{\partial P_+} + P_- \frac{\partial^2}{\partial P_\bot^2}, \\
+        K_\bot &= -2P_+ \frac{\partial^2}{\partial P_+ \partial P_\bot} - 2P_-\frac{\partial^2}{\partial P_- \partial P_\bot} - P_\bot \frac{\partial^2}{\partial P_\bot^2} - 2\Delta_\phi \frac{\partial}{\partial P_\bot} - 2 P_\bot \frac{\partial^2}{\partial P_+ \partial P_-}, \\
+        K_+ &= 2P_- \frac{\partial^2}{\partial P_-^2} + 2P_\bot \frac{\partial^2}{\partial P_- \partial P_\bot} + 2\Delta_\phi \frac{\partial}{\partial P_-} + P_+ \frac{\partial^2}{\partial P_\bot^2}.
+    \end{aligned}
+\end{equation} 
+We could determine the primary operators by then finding the null space of these 
+operators acting on the space of monomials. However, this basis of primary 
+operators is actually not the final basis we are after.
+
+To explain why, we first note that we are interested in deforming the CFT 
+Hamiltonian by a mass term (and interaction terms), as given in eq. 
+\eqref{massdeformation}. As reviewed in Appendix \ref{sec:ConstructingBasis}, 
+the presence of this mass term results in a divergence in the mass matrix 
+elements. Regulating this divergence with an $\epsilon$ prescription, we find 
+some eigenstates that are lifted out of the spectrum and those that remain 
+finite as $\epsilon \to 0$. The eigenstates corresponding to the finite matrix 
+elements are a reshuffling of the original primary basis, such that these states 
+satisfy \textit{Dirichlet} boundary conditions. Explicitly, this means operators 
+which have at least one factor of $P_-$ on each particle insertion to cancel 
+against the Lorentz invariant measure of the mass deformation. In momentum 
+space, this corresponds to wavefunctions of the type 
+\begin{equation}{}
+    p_{1-} p_{2-} \dotsb p_{n-} \left( \dotsb \right),
+\end{equation} 
+where the second set of ellipses indicates a generic function of 
+$p_{i-}$, $p_{i\bot}$, and $p_{i+}$. We will therefore introduce the following 
+notation to specify a Dirichlet basis state: 
+\begin{equation}
+    \begin{aligned}
+        | \mathcal{O}; \vec{P}, \mu \rangle = &\frac{1}{n!}\int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left( \sum_i p_i - P \right) \\
+        &\times p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\mathcal{O}}(p) | p_1, \dotsb, p_n \rangle,
+    \end{aligned}
+\end{equation} 
+where $\bar{F}_{\mathcal{O}}(p)$ indicates the Dirichlet wavefunction.
 
 One might be tempted to create a basis for the Dirichlet states by taking a list
 of all primary operators and throwing out the non-Dirichlet ones. Unfortunately,
@@ -167,7 +300,59 @@ orthonormal, and lacking a good systematic way to identify an orthonormal
 subset of them, we opted to abandon the primaries altogether, instead writing
 all possible below-cutoff Dirichlet states and finding an orthonormal subset
 using the Gram-Schmidt process. Details of our implementation can be found in 
-Appendix C.
+Appendices \ref{sec:ConstructingBasis} and \ref{sec:code}.
+
+Finally, to complete the discussion on our basis states, we must note that $\mu$ 
+as it appears in \eqref{contstatedef} is still a continuous parameter. It 
+denotes the kinetic energy of the state i.e. its eigenvalue under $P^2$. In 
+order to obtain a complete, \textit{discrete} basis, we must introduce some 
+prescription to discretize over this parameter. A general way to do this is to 
+integrate $\mu$ weighted by functions that carry some index 
+$k \in \mathbb{Z}_{\ge 0}$: 
+\begin{equation}
+    \begin{aligned}
+        | \mathcal{O}; \vec{P}, k \rangle = &\int d\mu^2 f(\mu) g_k(\mu) \frac{1}{n!} \int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left( \sum_i p_i - P \right) \\
+        &\times p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\mathcal{O}}(p) | p_1, \dotsb, p_n \rangle,
+    \end{aligned}
+\end{equation} 
+where $f(\mu)$ is a measure that we have freedom to choose. The region of 
+integration for $\mu$ is supposed to be taken from $[0, \infty)$. The reason 
+that it is non-negative is that there is a Wightman prescription for the 2-pt. 
+function of these operators that ensures positivity of the lightcone momenta. 
+However, the integral will diverge and must be regulated. For this reason, we 
+have to introduce a UV cutoff $\Lambda$. Cutting off the integral and rescaling 
+the region of integration to $[0,1]$ we find that our final states are given 
+by
+\begin{empheq}[box=\fbox]{align}
+    | \mathcal{O}; & \vec{P}, k \rangle = \frac{1}{\sqrt{2\pi} P_-^{n + |\boldsymbol{\lambda}_-|} \Lambda^{\frac{n-5}{2} + |\boldsymbol{\lambda}_\bot|}}\int_0^{1} \frac{d\bar{\mu}^2}{\bar{\mu}^{\frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}} g_k(\bar{\mu}) \label{eqn:finalbasisstates}\\
+    &\times \frac{1}{n!} \int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left( \sum_i p_i - P \right) \\
+    &\times p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\mathcal{O}}(p) | p_1, \dotsb, p_n \rangle \nonumber, 
+\end{empheq} 
+where we have defined the dimensionless $\bar{\mu} \equiv \frac{\mu}{\Lambda}$ 
+and $|\boldsymbol{\lambda}_{-,\bot}|$ count the number of $-$ and $\bot$ 
+derivatives in $\bar{F}_{\mathcal{O}}(p)$, respectively. In this paper, we 
+discretize $\mu$ into linearly spaced bins:
+\begin{equation}
+    \begin{aligned}
+        g_k(\bar{\mu}) = \frac{1}{\sqrt{\bar{\mu}^2_k - \bar{\mu}^2_{k-1}}} \left[ \theta(\bar{\mu}^2 - \bar{\mu}^2_{k-1}) - \theta(\bar{\mu}^2 - \bar{\mu}^2_k) \right], \label{gks}
+    \end{aligned}
+\end{equation} 
+where $\theta$ is the Heaviside step function. The purpose of the above equation 
+is to the set the region of integration in $\bar{\mu}$ to be in a bin between 
+$\bar{\mu}_{k-1}$ and $\bar{\mu}_k$. Truncating at some $k_{\textrm{max}}$, we 
+can obtain a discrete, finite-dimensional basis of Dirichlet states. The 
+normalization of these weight functions is chosen such that 
+\begin{equation}
+    \int_0^1 d\bar{\mu}^2 g_k(\bar{\mu}) g_{k'}(\bar{\mu}) = \delta_{k k'}.
+\end{equation}
+
+This completes our discussion of computing the Dirichlet basis. To summarize: we 
+tabulate all possible monomials $P_+^a P_-^b P_\bot^c \phi$ that satisfy 
+Dirichlet boundary conditions and obtain the orthonormal linear combinations 
+through a Gram-Schmidt procedure. We discretize in $\mu$ using the weight 
+functions in eq. \eqref{gks} and truncate at some 
+$\mathcal{C}_{\textrm{max}}$, $k_{\textrm{max}}$ obtain our final discrete, 
+truncated basis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -193,7 +378,7 @@ is the spectral density of any local operator $\Ocal(x)$,
 \rho_\Ocal(\mu) \equiv \sum_i |\<\Ocal(0)|\mu_i\>|^2 \, \de(\mu^2 - \mu_i^2).
 \label{eq:rho}
 \ee
-As shown in eq.~\eqref{eq:SpecDef}, spectral densities encode the same 
+As shown in eq.~\eqref{specdef}, spectral densities encode the same 
 information as real-time, infinite-volume correlation functions. For presenting 
 results, it will be more convenient to show the integrated spectral density,
 \be
@@ -212,74 +397,189 @@ which contains the same dynamical information as the spectral density.
 \section{Sanity Checks}
 \label{sec:SanityChecks}
 
+In this section, we perform consistency checks in the free massive theory where 
+$\lambda = 0$. We then compare with theoretical predictions, which gives us a 
+nontrivial check of the Dirichlet basis.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\subsection{Spectral Densities in Free Field Theory}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\subsection{Equation of Motion and Ward Identity}
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\section{Critical Coupling for $\phi^4$ Theory}
-\label{sec:Coupling}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\subsection{Tuning to the Critical Point}
-
+In section \ref{sec:theoryspecdens}, we first explain how to compute the 
+theoretical predictions for the spectral density associated with a generic local 
+operator $\mathcal{O}_{\mu_1, \dots, \mu_{\ell}}(x)$. We then compare these 
+analytic answers to the numerical results obtained from conformal truncation. 
+We will primarily focus on comparisons involving the energy-momentum tensor.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\subsection{Comparison with Prior Work}
-\label{subsec:compare}
+\subsection{Spectral Densities in Free Field Theory} \label{sec:theoryspecdens} 
+Let's briefly review some details about spectral densities of operators in free 
+massive theory. The spectral density is the decomposition of the two-point 
+correlation function in terms of mass eigenstates:
+\begin{equation}
+    \langle \mathcal{O}(x) \mathcal{O}(0) \rangle = \int d\mu^2 \rho_{\mathcal{O}}(\mu) \int \frac{d^2 P}{(2\pi)^2 2 P_0} e^{-i P \cdot x}.\label{specdef}
+\end{equation}
+Forbrevity, we have omitted any tensor structure, but the operators appearing on
+theLHS could, for example, be various components of spinning operators. In a
+freetheory, we can expand the correlator on the LHS in terms of Fock space
+modes:
+\begin{equation}
+    \begin{aligned}
+        \langle \mathcal{O}(x) \mathcal{O}(0) \rangle &= \frac{1}{n!} \int \frac{d^3 p_1 \dotsb d^3 p_n}{(2\pi)^{3n}} \prod_i (2\pi) \delta(p_i^2-m^2) | \langle \mathcal{O}(0) | p_1, \dots, p_n \rangle |^2 e^{-i \left(\sum_i p_i \right) \cdot x} \\
+        &= \int \frac{d\mu^2}{2\pi} \frac{1}{n!} \int \frac{d^3 p_1 \dotsb d^3 p_n}{(2\pi)^{3n}} \left( \prod_i (2\pi) \delta(p_i^2-m^2)\right) (2\pi)^3 \delta^3 \left( P - \sum_i p_i \right) \\
+        &\,\,\, \times | \langle \mathcal{O}(0) | p_1, \dots, p_n \rangle |^2 \times \int \frac{d^2 P}{(2\pi)^2 2P_0} e^{-i P \cdot x},
+    \end{aligned}
+\end{equation} 
+where we inserted a complete set of states and used the fact that 
+$d^3P = d\mu^2 \frac{d^2 P}{2P_0}$. Equating this to eq.~\eqref{specdef}, we can 
+therefore obtain an explicit equation for the spectral density associated with 
+any local operator $\mathcal{O}$: 
+\begin{equation} 
+    \rho_{\mathcal{O}}(\mu) = \frac{1}{2\pi n!} \int \frac{d^3 p_1 \dotsb d^3 p_n}{(2\pi)^{3n}} \left( \prod_i (2\pi) \delta(p_i^2 - m^2) \right) (2\pi)^3 \delta^3 ( P - \sum_i p_i ) | \langle \mathcal{O}(0) | p_1, \dots, p_n \rangle |^2. \label{specdensexplicit}
+\end{equation} 
+This formula also holds for operators with spin, so that we can compare 
+theoretical predictions for spectral densities of various components of spinning 
+operators. The simplest way to apply eq. \eqref{specdensexplicit} is to compute 
+the overlap $| \langle \mathcal{O}(0) | p_1, \dots, p_n \rangle |$, evaluate the 
+integrals in the total momentum frame 
+$P = (\mu, \vec{0})$, $p_i = (E_i, \vec{p}_i)$, and then perform a boost to the 
+lightcone frame. Let's see how this works for a few examples.
 
+Consider the spectral density associated with the simplest two-particle operator 
+$\phi^2$. The overlap of this operator with the two-particle Fock space state is 
+simply 
+\begin{equation}
+    \langle \phi^2(0) | p_1, p_2 \rangle = 2.
+\end{equation} 
+Plugging this into eq. \eqref{specdensexplicit}, and evaluating in the frame 
+\begin{equation}
+    P = (\mu, \vec{0}), \quad\quad\quad p_1 = (E_1, \vec{p}_1), \quad\quad\quad p_2 = (E_2, \vec{p}_2),
+\end{equation} 
+we find 
+\begin{equation}
+    \rho_{\phi^2}(\mu) = \frac{1}{4\pi \mu} \theta(\mu - 2m).
+\end{equation} Note that the step function signifies that the two-particle 
+spectral density starts at the two-particle threshold, as expected. There is no 
+need to boost this answer to the lightcone frame as this spectral density is 
+associated with the scalar two-point function $\langle \phi^2 \phi^2 \rangle$. 
+We can repeat this analysis for any $\phi^n$ operator which gives the spectral 
+density 
+\begin{equation}
+    \rho_{\phi^n}(\mu) = \frac{n!(\mu-n m)^{n-2}}{(n-2)!(4\pi)^{n-1 2\mu}}.
+\end{equation}
 
+Now let's consider a more nontrival example of the stress-energy tensor. It is 
+given by 
+\begin{equation}
+    T_{\mu\nu} = \frac{3}{4} \partial_\mu \phi \partial_\nu \phi - \frac{1}{4} \eta_{\mu\nu} \partial_{\sigma} \phi \partial^\sigma \phi - \frac{1}{4} \phi \partial_\mu \partial_\nu \phi + \frac{1}{2}m^2 \eta_{\mu\nu} \phi^2.
+\end{equation} 
+Let's start with the all minus component $T_{--}$. The overlap is given by 
+\begin{equation}
+    \langle T_{--}(0) | p_1, p_2 \rangle = - \frac{1}{4} \left(6 p_{1-} p_{2-} - p_{1-}^2 - p_{2-}^2 \right).
+\end{equation} 
+We can evaluate the integrals in eq. \eqref{specdensexplicit} by noting that 
+\begin{equation}
+    p_{1 \pm} = \frac{1}{\sqrt{2}} (E_1 \pm p_{1x}), \quad\quad\quad p_{2 \pm} = \frac{1}{\sqrt{2}}(E_2 \pm p_{2,x}),
+\end{equation} 
+which gives 
+\begin{equation}
+    \tilde{\rho}_{T_{--}}(\mu) = \frac{\mu^4 - 8 \mu^2 m^2 + 48 m^4}{2048 \pi \mu},
+\end{equation} 
+where the tilde indicates that we still need to boost to the lightcone frame. We 
+have computed the spectral density associated with $T_{--}$ in the frame 
+$(P_+, P_-, P_\bot) =\left( \frac{\mu}{\sqrt{2}}, \frac{\mu}{\sqrt{2}}, 0 \right)$ 
+while the lightcone frame is given by 
+$(P_+, P_-, P_\bot) =\left( \frac{\mu^2}{2P_-},P_-, 0 \right)$. In lightcone 
+coordinates, a boost which sends a vector $V_+ \to \tau V_+$ takes 
+$V_- \to \tau^{-1} V_-$ to preserve the lightcone inner product. We therefore 
+need $\tau = \frac{\mu}{\sqrt{2} P_-}$ so that 
+$\rho_{T_{--}} = \tau^{-4} \tilde{\rho}_{T_{--}}$, since there are four minus 
+indices in $\langle T_{--} T_{--} \rangle$. We therefore get 
+\begin{equation}
+    \boxed{ \rho_{T_{--}}(\mu) = \frac{P_-^4 (\mu^4 - 8 \mu^2 m^2 + 48 m^4)}{512 \pi \mu^5} .}
+\end{equation}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can apply this procedure to generate the spectral densities for the remaining 
+components. Note that 
+\begin{equation}
+    \langle T_{-\bot}(0) | p_1, p_2 \rangle = -\frac{1}{4}(3p_{1-} p_{2\bot} + 3p_{1\bot} p_{2-} - p_{1-} p_{1\bot}- p_{2-} p_{2\bot}),
+\end{equation} 
+which gives 
+\begin{equation}
+    \boxed{ \rho_{T_{-\bot}}(\mu) = \frac{P_-^2 (\mu^2 - 4m^2)^2}{512 \pi \mu^3} .}
+\end{equation} 
+Finally, we have 
+\begin{equation}
+    \langle T_{\bot \bot}(0) | p_1, p_2 \rangle = -\frac{1}{4}(4p_{1\bot} p_{2\bot} + 2p_{1+}p_{2-} + 2p_{1-} p_{2+} - p_{1\bot}^2-p_{2\bot}^2) - m^2 \eta_{\bot\bot},
+\end{equation} 
+which gives 
+\begin{equation}
+    \boxed{ \rho_{T_{\bot\bot}}(\mu) = \frac{\mu^4 - 8 m^2 \mu^2 + 88 m^4}{512 \pi \mu} .}
+\end{equation}
 
+Now that we have theoretical predictions for these spectral densities, we can 
+compare them to those obtained from conformal truncation. In order to do this, 
+we will need the overlaps of the UV operators with our eigenstates in order to 
+compute the cumulative overlap in eq. \eqref{eq:I}. That is to say, in order to 
+compute eq. \eqref{eq:I}, we can insert a resolution of the identity 
+corresponding to our basis 
+\begin{equation}
+    \begin{aligned}
+        I_{\mathcal{O}}(\mu) =  \sum_{\mu_i \le \mu } \sum_{\tilde{\mathcal{O}}} | \inner{\mathcal{O}(0)}{\tilde{\mathcal{O}}}\inner{\tilde{\mathcal{O}}}{\mu_i}|^2.
+    \end{aligned}
+\end{equation} 
+The second piece $\inner{\tilde{\mathcal{O}}}{\mu_i}$ merely picks out that 
+operator of our eigenvector. Meanwhile, the overlaps 
+$\inner{\mathcal{O}(0)}{\tilde{\mathcal{O}}}$ are given by 
+\begin{equation}
+    \begin{aligned}
+        \inner{\mathcal{O}(0)}{\tilde{\mathcal{O}}} = \frac{P_-^{d_-} \Lambda^{\frac{n-1}{2}+d_{\bot}}}{\sqrt{2\pi}} \left( \frac{2}{\frac{n+1}{2}+d_\bot} \right) \left( \frac{\mu_k^{\frac{n+1+2d_\bot}{2}} - \mu_{k-1}^{\frac{n+1+2d_\bot}{2}}}{\sqrt{\mu_k^2 - \mu_{k-1}^2}} \right) \times \mathcal{I}_{\mathcal{O} \tilde{\mathcal{O}}}^{\textrm{inner}}.
+    \end{aligned}
+\end{equation} 
+$d_{-,\bot}$ count the number of minus and perp derivatives in $\mathcal{O}$. 
+And $\mathcal{I}_{\mathcal{O} \tilde{\mathcal{O}}}^{\textrm{inner}}$ is the 
+inner product between $\mathcal{O}$ and $\tilde{\mathcal{O}}$ as defined in eq. 
+\eqref{inner}\footnote{Note that the wavefunction corresponding to $\mathcal{O}$ 
+isn't necessarily one that satisfies the Dirichlet boundary conditions which we 
+introduce in later sections.}.
 
+In Fig. \ref{fig:FreeDensities}, we show the spectral densities of the operators 
+$\phi^2$ through $\phi^5$. We see that the numerical results agree with the 
+theoretical prediction for the spectral density for a wide range of $\mu$. Our 
+IR cutoff is set by $k_{\textrm{max}}$, where 
+\begin{equation}
+    \Lambda_{\textrm{IR}} \sim \frac{\Lambda_{\textrm{UV}}}{k_{\textrm{max}}}
+\end{equation} 
+and at $k_{\textrm{max}} = 100$, we see that the IR cutoff is small enough that 
+the spectral density is within a few percent of the theoretical prediction even 
+for $\mu \gg m$. In Figs. \ref{fig:FreeDensitiesTmm} and 
+\ref{fig:FreeDensitiesTmp}, we show the spectral densities for 
+$T_{--}$, $T_{-\bot}$, which similarly agree with the analytic predictions. 
+Similar plots exist for the remaining components and also agree closely with the 
+theoretical result.
 
-\section{Ising Model Near Critical Temperature}
-\label{sec:Ising}
+\begin{figure}[t!]
+\begin{center}
+\includegraphics[width=\textwidth]{truncation_chapter/FreePhiN}
+\caption{Integrated spectral densities for $\phi^2$ (upper left), $\phi^3$ (upper right), $\phi^4$ (lower left), and $\phi^5$ (lower right) in massive free field theory ($\lambda=0$), both the raw value (main plot) and normalized by the theoretical prediction (inset). The conformal truncation results (blue dots) for each plot are computed using the $\Dmax$ shown, with the corresponding number of $n$-particle basis states, and compared to the theoretical prediction (black curve).}
+\label{fig:FreeDensities} 
+\end{center}
+\end{figure}
 
+\begin{figure}[t!]
+\begin{center}
+\includegraphics[width=\textwidth]{truncation_chapter/Tmm}
+\caption{Integrated spectral densities for the stress tensor component $T_{--}$ in massive free field theory ($\lambda=0$), both the raw value (main plot) and normalized by the theoretical prediction (inset). The conformal truncation results (blue dots) for each plot are computed using the $\Dmax$ shown, with the corresponding number of $n$-particle basis states, and compared to the theoretical prediction (black curve).}
+\label{fig:FreeDensitiesTmm} 
+\end{center}
+\end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\subsection{Trace of the Stress-Energy Tensor}
-\label{subsec:stress}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\subsection{Universality in $\phi^n$ Spectral Densities}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
+\begin{figure}[t!]
+\begin{center}
+\includegraphics[width=\textwidth]{truncation_chapter/Tmp}
+\caption{Integrated spectral densities for $T_{-\bot}$ in massive free field theory ($\lambda=0$), both the raw value (main plot) and normalized by the theoretical prediction (inset). The conformal truncation results (blue dots) for each plot are computed using the $\Dmax$ shown, with the corresponding number of $n$-particle basis states, and compared to the theoretical prediction (black curve).}
+\label{fig:FreeDensitiesTmp} 
+\end{center}
+\end{figure}
 
 \section{Discussion}
 \label{sec:Discussion}
@@ -335,87 +635,232 @@ comprehensive studies of 3D.
 \section{Constructing the Basis of Dirichlet States}
 \label{sec:ConstructingBasis}
 
-%In this section, we generalize the construction of the Dirichlet basis first introduced in [] to arbitrary particle number. To briefly review how this basis arises, 
+By definition, the original basis of Casimir eigenstates consists of eigenstates 
+of the CFT Hamiltonian. However, once we introduce a relevant mass deformation 
+to the Hamiltonian 
+\begin{equation}
+    \delta P_+^{(m)} = \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{m^2}{2 p_-},
+\end{equation} 
+there are IR divergences associated with the mass matrix whenever any individual 
+lightcone momentum of an $n$-particle eigenstate go to zero. If we regulate 
+these divergences by introducing a small parameter $\epsilon$, the resultant 
+mass spectrum contains two types of eigenstates: those that diverge as 
+$\epsilon \to 0$ and those that remain finite. The states that diverge in this 
+limit are lifted out of the spectrum, such that we can focus on the low-lying 
+sector. The states that remain finite can be seen as a specific linear 
+combination of Casimir eigenstates, a reshuffling of the original UV basis such 
+that their eigenvalues are finite in the limit $\epsilon \to 0$. In practice, 
+this reshuffling gives rise to a ``Dirichlet'' wavefunction 
+$\tilde{F}_{\CO}^{(n)}(p)$ that is schematically the product of the lightcone 
+momenta times a wavefunction which we denote $\bar{F}_{\CO}^{(n)}(p)$: 
+\begin{equation}
+    F_{\CO}^{(n)}(p) \to \tilde{F}_{\CO}^{(n)}(p) \sim p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\CO}^{(n)}(p). \label{dirshuffle}
+\end{equation} 
+We will drop the $(n)$ superscript for brevity. 
 
-The construction of the Dirichlet basis from the basis of Casimir eigenstates was first introduced in []. We will briefly review that approach below and then explain how it can be generalized to arbitrary particle number.
+It is important to note that the size of the Dirichlet basis is smaller than 
+that of the original Casimir basis. While every Dirichlet state has this overall 
+factor of $p_{1-} \dotsb p_{n-}$, we cannot obtain it from starting with the UV 
+basis and simply tacking on the product of momenta. These states consist of 
+\textit{specific} linear combinations of UV primaries that are orthogonal with 
+respect to an inner product, and in the following section we outline how to 
+numerically compute them.
 
-By definition, the original basis of Casimir eigenstates consists of eigenstates of the CFT Hamiltonian. However, once we introduce a relevant mass deformation to the Hamiltonian \begin{equation}
-	\delta P_+^{(m)} = \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{m^2}{2 p_-},
-\end{equation} there are IR divergences associated with the mass matrix whenever any individual lightcone momentum of an $n$-particle eigenstate go to zero. If we regulate these divergences by introducing a small parameter $\epsilon$, the resultant mass spectrum contains two types of eigenstates: those that diverge as $\epsilon \to 0$ and those that remain finite. The states that diverge in this limit are lifted out of the spectrum, such that we can focus on the low-lying sector. The states that remain finite can be seen as a specific linear combination of Casimir eigenstates, a reshuffling of the original UV basis such that their eigenvalues are finite in the limit $\epsilon \to 0$. In practice, this reshuffling gives rise to a ``Dirichlet'' wavefunction $\tilde{F}_{\CO}^{(n)}(p)$ that is schematically the product of the lightcone momenta times a wavefunction which we denote $\bar{F}_{\CO}^{(n)}(p)$: \begin{equation}
-	F_{\CO}^{(n)}(p) \to \tilde{F}_{\CO}^{(n)}(p) \sim p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\CO}^{(n)}(p). \label{dirshuffle}
-\end{equation} We will drop the $(n)$ superscript for brevity. 
+\subsection{Two-Particle Example} Before we move onto the general case, we 
+briefly review how the Dirichlet basis arises in a simple two-particle example. 
+We will show how the addition of a mass deformation to the Hamiltonian 
+reshuffles the basis, resulting in a divergent piece that is lifted out of the 
+IR spectrum and a finite piece that is a physical state.
 
-It is important to note that the size of the Dirichlet basis is smaller than that of the original Casimir basis. While every Dirichlet state has this overall factor of $p_{1-} \dotsb p_{n-}$, we cannot obtain it from starting with the UV basis and simply tacking on the product of momenta. These states consist of \textit{specific} linear combinations of UV primaries that are orthogonal with respect to an inner product, and in the following section we outline how to numerically compute them.
+To see this, consider a truncated 2-particle basis consisting of the operators 
+$\phi^2$ and $T_{--}$, where $T_{--}$ is given by\footnote{Up to a normalization 
+constant that we will ignore as it is not important for this discussion.} 
+\be 
+    T_{--} = \phi \partial_-^2 \phi - 3(\partial_- \phi)^2. 
+\ee 
+In momentum space, we can express the wavefunction associated with $T_{--}$ as 
+\begin{equation}
+    \int d^3 x \, e^{i x \cdot P} \bra{\phi \partial_-^2 \phi (x) - 3 (\partial_- \phi)^2 (x)} p_1, p_2 \rangle = [6 p_{1-} p_{2-} -(p_1^2+p_2^2)] \times \delta(P-p_1-p_2), 
+\end{equation} 
+Let's first start with the simple example of the mass term matrix element 
+between $\phi^2$. We find 
+\begin{equation}
+\begin{aligned}
+    \langle {\phi^2; P'} |2P_- \delta P_+^{(m)} | {\phi^2, P} \rangle = &2P_- m^2 \int \frac{d^2 k_1 d^2 k_2}{(2\pi)^4 2 k_{1-} 2 k_{2-}} (2\pi)^3 \delta^3(k_1+k_2-P') \\
+    &\times (2\pi)^3 \delta^3(k_1+k_2-P) \left(\frac{1}{k_{1-}} + \frac{1}{k_{2-}} \right).
+\end{aligned}
+\end{equation} 
+Already, we can see how the divergence will arise. We see that when any of the 
+$k_{i-} \to 0$, the integral above will exhibit a divergence which will need to 
+be regulated. In fact, the delta functions cause the two integrals above to 
+collapse to a single integral and introducing an $\epsilon$ regulator and 
+performing that integral using the coordinate transformations in Appendix 
+\ref{gencase}, we find 
+\begin{equation}
+    \langle \phi^2; P' | 2 P_- \delta P_+^{(m)} | \phi^2, P \rangle = 2P_-  (2\pi)^2 \delta(\vec{P}-\vec{P}') \frac{m^2}{\mu}\left(\frac{1}{\sqrt{P_- \epsilon}} + \mathcal{O}(\epsilon) \right),
+\end{equation} 
+where $P^2 =\mu^2$. As expected, this matrix element diverges as 
+$1/\sqrt{\epsilon}$. Now, performing the same exercise for the other operator 
+$T_{--}$, we find 
+\begin{equation}
+    \begin{aligned}
+        \bra{T_{--}; P'} 2P_- \delta P_+^{(m)} \ket{ T_{--}; P} &= 2P_- (2\pi)^2 \delta^2(\vec{P}-\vec{P}') \frac{m^2}{\mu} \left( \frac{ P_-^{7/2}}{\sqrt{\epsilon}} + \mathcal{O}(\epsilon) \right).
+    \end{aligned}
+\end{equation} 
+We can also similarly compute the matrix element between $T_{--}$ and $\phi^2$. 
+Ignoring overall numerical factors and the $\mu$ dependence, we find that the 
+divergent part of the matrix elements looks like 
+\begin{equation}
+    M^2 \sim \frac{1}{\sqrt{\epsilon}} \begin{pmatrix}
+        P_-^{-1/2} & P_{-}^{3/2} \\
+        P_{-}^{3/2} & P_{-}^{7/2}
+    \end{pmatrix}
+\end{equation} 
+This matrix has two eigenvalues: 0 and one that diverges as $\epsilon \to 0$, 
+which is $\sim \frac{1}{\sqrt{\epsilon}}$. If we look at the eigenvector 
+corresponding to the former, we find that it is just a linear combination 
+\begin{equation}
+    \begin{pmatrix}
+            P_-^2 & 1
+    \end{pmatrix} = -P_-^2 \phi^2 + T_{--} = -(p_1+p_2)^2 \phi^2 + T_{--} = -\phi \partial_-^2 \phi - (\partial_- \phi)^2 + T_{--}.
+\end{equation} 
+We see that the $\phi \partial_-^2 \phi$ cancels against the same term in 
+$T_{--}$, leaving just a term proportional to $(\partial_- \phi)^2$. The effect 
+of the Dirichlet boundary condition is to therefore to \textit{reshuffle} the 
+basis and remove the problematic piece in $T_{--}$. The reduced Dirichlet basis, 
+which in this case consists of the single eigenstate corresponding to the 
+operator $(\partial_- \phi)^2$, is the finite eigenstate, while the divergent 
+piece is lifted out of the spectrum. In effect, the Dirichlet basis consists of 
+reshuffling of the original basis such that the operators that remain have a 
+product of momenta $p_{1-} p_{2-} \dotsb p_{n-}$ necessary to cancel against the 
+IR divergence.
 
-\subsection{Two-Particle Example} Before we move onto the general case, we briefly review how the Dirichlet basis arises in a simple two-particle example.
+The purpose of this example was to show how the Dirichlet basis arises from the 
+standard conformal primary basis once we deform by a mass term. We see that the 
+size of the Dirichlet basis is smaller than that of the original basis (and this 
+behavior will persist as we increase the size of the basis). In practice, one 
+could construct the Dirichlet states by finding the finite linear combinations 
+of eigenstates, which amounts to determining the kernel of the divergent part of 
+the mass matrix. However, our approach will simply be to construct these states 
+by demanding that every Dirichlet state has a product of momenta 
+$p_{1-} p_{2-} \dotsb p_{n-}$ and using their associated inner product. We will 
+describe this in the next section.
 
-\subsection{General Case} While the above method for constructing the Dirichlet basis can be generalized, in this work we will explicitly construct the basis of Dirichlet states from their associated inner product. This basis is identical to what is obtained by starting with Casimir eigenstates and demanding that they satisfy Dirichlet boundary conditions, but it is computationally more efficient to implement. We leave the details of our numerical algorithm to section \ref{sec:code}; below we will derive the Dirichlet inner product and explain the symmetrization procedure to obtain our final basis states.
+\subsection{General Case \label{gencase}} 
+While the above method for constructing the Dirichlet basis can be generalized, 
+in this work we will explicitly construct the basis of Dirichlet states from 
+their associated inner product. This basis is identical to what is obtained by 
+starting with Casimir eigenstates and demanding that they satisfy Dirichlet 
+boundary conditions, but it is computationally more efficient to implement. We 
+leave the details of our numerical algorithm to section \ref{sec:code}; below we 
+will derive the Dirichlet inner product and explain the symmetrization procedure 
+to obtain our final basis states.
 
-Our Dirichlet states take the form \begin{equation}
-	\begin{aligned}
-		\ket{\tilde{\CO};\vec{P}, k} &= \int_0^{1} d\mu^2 g_k(\mu) \int \frac{d^2p_1 \dotsb d^2p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \ket{p_1, \dots, p_n},
-	\end{aligned}
-\end{equation} where we have substituted in the Dirichlet wavefunction in eq. (\ref{dirshuffle}). The inner product then takes the form \begin{equation}
-	\begin{aligned}
-		\inner{\tilde{\CO}';\vec{P}', k'}{\tilde{\CO};\vec{P}, k} = & 2P_- (2\pi)^2 \delta^2(\vec{P}-\vec{P}')  \frac{1}{2^{n-1} (2\pi)^{2n}  n!}\int_0^{1} d\mu^2 \int_0^{1} d{\mu'}^2 g_k({\mu'}^2) g_{k'}(\mu^2) (2\pi) \delta(\mu^2 - {\mu'}^2) \\
-		&\times  \int d^2 p_1 \dotsb d^2 p_n (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \bar{F}_{\Ocal'}(p).
-	\end{aligned}
-\end{equation} The integral over ${\mu'}^2$ collapses due to the delta function. Since our weight functions are \textit{defined} to be orthonormal when integrated over $\mu^2$ with unit measure, the inner product factorizes into an orthogonal piece with respect to $k$ and $k'$ and a piece that depends on $\CO$ and $\CO'$: \begin{equation}
-	\begin{aligned}
-		\inner{\tilde{\CO}';\vec{P}', k'}{\tilde{\CO};\vec{P}, k} = & 2P_- (2\pi)^2 \delta^2(\vec{P}-\vec{P}')  \frac{1}{2^{n-1} (2\pi)^{2n-1}  n!} \delta_{k,k'} \\
-		&\times  \int d^2 p_1 \dotsb d^2 p_n (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \bar{F}_{\Ocal'}(p),
-	\end{aligned}
-\end{equation} so that we can focus on the latter part of the integral.
+Our Dirichlet states take the form as in eq. \eqref{eqn:finalbasisstates}, which 
+we reproduce here: 
+\begin{equation}
+    \begin{aligned}
+        | \mathcal{O};  \vec{P}, k \rangle = &\frac{1}{\sqrt{2\pi} P_-^{n + |\boldsymbol{\lambda}_-|} \Lambda^{\frac{n-5}{2} + |\boldsymbol{\lambda}_\bot|}}\int_0^{1} \frac{d\bar{\mu}^2}{\bar{\mu}^{\frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}} g_k(\bar{\mu}) \label{eqn:finalbasisstates}\\
+        &\times \frac{1}{n!}\int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left( \sum_i p_i - P \right) \\
+        &\times p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\mathcal{O}}(p) | p_1, \dotsb, p_n \rangle,
+    \end{aligned}
+\end{equation} 
+where we have substituted in the Dirichlet wavefunction in eq. 
+(\ref{dirshuffle}). The inner product then takes the form 
+\begin{equation}
+    \begin{aligned}
+        &\inner{\mathcal{O}';\vec{P}', k'}{\mathcal{O};\vec{P}, k} = \frac{2P_- (2\pi)^2 \delta^2(\vec{P}-\vec{P}')}{2^n n!} \frac{1}{2\pi P_-^{2n+ |\boldsymbol{\lambda}_-|+|\boldsymbol{\lambda}^{\prime}_\bot|} \Lambda^{n-5 + |\boldsymbol{\lambda}_\bot|+|\boldsymbol{\lambda}^{\prime}_-|}} \\
+        &\times \int_0^{1} \frac{d\bar{\mu}^2}{\bar{\mu}^{\frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}} \int_0^{1} \frac{d\bar{\mu}^{\prime 2}}{\bar{\mu}^{\prime \frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}} g_k(\bar{\mu}^2) g_{k'}(\bar{\mu}^{\prime 2}) (2\pi) \delta(\bar{\mu}^2 - \bar{\mu}^{\prime 2}) \\
+        &\times \int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n}} (2\pi)^3 \delta^3\left(\sum_i p_i - P \right)
+        p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \bar{F}_{\Ocal'}(p).
+    \end{aligned}
+\end{equation} 
+Using the equations of motion and the choice of our reference frame of 
+$P_\bot = 0$, the set of delta functions can be recast as 
+\begin{equation}
+    \begin{aligned}
+        \delta^3\left(\sum_i p_i - P \right) = \delta\left(\sum_i \frac{p_{i\bot}^2}{2p_{i-}} - \frac{\mu^2}{2P_-} \right)\delta\left(\sum_i p_{i-} - P_- \right)\delta\left(\sum_i p_{i\bot}\right).
+    \end{aligned}
+\end{equation} 
+Here, it is useful to define dimensionless variables 
+\begin{equation}
+    x_i \equiv \frac{p_{i-}}{P_-},\quad\quad\quad\quad\quad\quad y_i \equiv \frac{p_{i\bot}}{\mu}, \label{dimlessvars}
+\end{equation} 
+so that the wavefunctions have a scaling set by 
+\begin{equation}
+    \tilde{F}_{\CO}(p) = \mu^{|\lamvec_\bot|} P_-^{n+|\lamvec_-|} x_1 \dotsb x_n \bar{F}_{\CO}(x,y),
+\end{equation} 
+where $|\lamvec_\bot|$ counts the number of $P_\bot$ derivatives while 
+$|\lamvec_-|$ counts the number of $P_-$ derivatives in 
+$\bar{F}_{\mathcal{O}}(p)$. These scaling factors cancel against the factors 
+coming from the $\bar{\mu}$ integration measure. Since our weight functions are 
+\textit{defined} to be orthonormal when integrated over $\mu^2$ with unit 
+measure, the inner product factorizes into an orthogonal piece with respect to 
+$k$ and $k'$ and a piece that depends on $\CO$ and $\CO'$: 
+\begin{equation}
+    \begin{aligned} 
+        \inner{\mathcal{O}';\vec{P}', k'}{\mathcal{O};\vec{P}, k} = 2P_- (2\pi)^2 \delta^2 (\vec{P}-\vec{P}') \delta_{k k'} \mathcal{I}_{\mathcal{O'}\mathcal{O}}.
+    \end{aligned}
+\end{equation}
 
+To determine $\mathcal{I}_{\mathcal{O'}\mathcal{O}}$, we can choose integration 
+variables defined by 
+\begin{equation}
+    \begin{aligned}
+        x_1 &= (1-z_1)(1-z_2)(1-z_3) \dotsb (1-z_{n-1}), \\
+        x_2 &= \quad\quad\,\,\, z_1(1-z_2)(1-z_3) \dotsb (1-z_{n-1}), \\
+        x_3 &= \quad\quad\,\,\, \quad\quad\quad\,\, z_2(1-z_3) \dotsb (1-z_{n-1}), \\
+        &\vdots \quad\quad\quad\quad\quad\quad\quad\quad\quad \ddots \\
+        x_n &= \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad z_{n-1}, \label{xtrans}
+    \end{aligned}
+\end{equation} 
+where the $z_i$ range from $[0, 1]$, and 
+\begin{equation}
+    \begin{aligned}
+        y_1 &= -(y_2+ y_3 + \dotsb + y_n), \\
+        y_2 &= \tilde{y}_1 \sqrt{z_1(1-z_1) \dotsb (1-z_{n-1})} - z_1(y_3 + \dotsb + y_n), \\
+        y_3 &= \tilde{y}_2 \sqrt{z_2(1-z_2) \dotsb (1-z_{n-1})} - z_2(y_4 + \dotsb + y_n), \\
+        & \, \, \, \vdots\\
+        y_n &= \tilde{y}_{n-1} \sqrt{z_{n-1}(1-z_{n-1})}. \label{ytrans}
+    \end{aligned}
+\end{equation} 
+In these variables, the original set of delta functions we had simply reduce to 
+\begin{equation}
+    \begin{aligned}
+        \delta^3\left(\sum_i p_i - P \right) \to \frac{2}{\mu^3} \delta \left( \sum_i^{n-1} \tilde{y}_i^2 - 1 \right).
+    \end{aligned}
+\end{equation} 
+Introducing angular variables for the remaining $\tilde{y}$ variables to 
+implement this constraint 
+\begin{equation}
+    \begin{aligned}
+        \tilde{y}_1 &= \sin \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-2}, \\
+        \tilde{y}_2 &= \cos \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-2}, \\
+        \tilde{y}_3 &= \cos \theta_2 \sin \theta_3 \dotsb \sin \theta_{n-2}, \\
+        &\, \, \, \vdots \\
+        \tilde{y}_{n-1} &= \cos \theta_{n-2}, \label{thetatrans}
+    \end{aligned}
+\end{equation} 
+where $\theta_i \in [0, \pi]$ for $i = 1, \dots, n-3$ and 
+$\theta_{n-2} \in [0, 2\pi]$, we find that the inner product becomes 
+\begin{equation}
+    \begin{aligned}
+        \inner{\mathcal{O}';\vec{P}', k'}{\mathcal{O};\vec{P}, k} = 2P_- (2\pi)^2 \delta^2 (\vec{P}-\vec{P}') \delta_{k k'} \mathcal{I}_{\mathcal{O'}\mathcal{O}},
+    \end{aligned}
+\end{equation} 
+with 
+\begin{empheq}[box=\fbox]{align}
+    \mathcal{I}_{\mathcal{O'}\mathcal{O}} =  \frac{1}{n! 2^n (2\pi)^{2n-3}} &\int dz_1 \dotsb dz_{n-1} \left( \prod_i z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i-1} \right) \nonumber \\
+    &\times \int d\theta_1 \dotsb d\theta_{n-2} \left( \prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal'}(z,\theta). \label{inner}
+\end{empheq}
 
-Using the equations of motion and the choice of our reference frame of $P_\bot = 0$, the set of delta functions can be recast as \begin{equation}
-	\begin{aligned}
-		\delta^3\left(\sum_i p_i - P \right) = \delta\left(\sum_i \frac{p_{i\bot}^2}{2p_{i-}} - \frac{\mu^2}{2P_-} \right)\delta\left(\sum_i p_{i-} - P_- \right)\delta\left(\sum_i p_{i\bot}\right).
-	\end{aligned}
-\end{equation} Here, it is useful to define dimensionless variables \begin{equation}
-	x_i \equiv \frac{p_{i-}}{P_-},\quad\quad\quad\quad\quad\quad y_i \equiv \frac{p_{i\bot}}{\mu}, \label{dimlessvars}
-\end{equation} so that the wavefunctions have a scaling set by \begin{equation}
-	\tilde{F}_{\CO}(p) = \mu^{|\lamvec_\bot|} P_-^{n+|\lamvec_-|} x_1 \dotsb x_n \bar{F}_{\CO}(x,y),
-\end{equation} where $|\lamvec_\bot|$ counts the number of $P_\bot$ derivatives while $|\lamvec_-|$ counts the number of $P_-$ derivatives modulo the overall Dirichlet prefactor that comes from $p_{1-} \dotsb p_{n-}$. In practice, we will not need to keep track of these overall scaling factors of $P_-$ and $\mu$ since we will normalize our states such that these overall factors are canceled in the final inner product expression. Choosing integration variables \begin{equation}
-		\begin{aligned}
-			x_1 &= (1-z_1)(1-z_2)(1-z_3) \dotsb (1-z_{n-1}), \\
-			x_2 &= \quad\quad\,\,\, z_1(1-z_2)(1-z_3) \dotsb (1-z_{n-1}), \\
-			x_3 &= \quad\quad\,\,\, \quad\quad\quad\,\, z_2(1-z_3) \dotsb (1-z_{n-1}), \\
-			&\vdots \quad\quad\quad\quad\quad\quad\quad\quad\quad \ddots \\
-			x_n &= \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad z_{n-1}, \label{xtrans}
-		\end{aligned}
-	\end{equation} where the $z_i$ range from $[0, 1]$, and \begin{equation}
-		\begin{aligned}
-			y_1 &= -(y_2+ y_3 + \dotsb + y_n), \\
-			y_2 &= \tilde{y}_1 \sqrt{z_1(1-z_1) \dotsb (1-z_{n-1})} - z_1(y_3 + \dotsb + y_n), \\
-			y_3 &= \tilde{y}_2 \sqrt{z_2(1-z_2) \dotsb (1-z_{n-1})} - z_2(y_4 + \dotsb + y_n), \\
-			& \, \, \, \vdots\\
-			y_n &= \tilde{y}_{n-1} \sqrt{z_{n-1}(1-z_{n-1})}, \label{ytrans}
-		\end{aligned}
-	\end{equation} the delta functions simply reduce to \begin{equation}
-		\begin{aligned}
-			\delta^3\left(\sum_i p_i - P \right) \to \frac{2}{\mu^3} \delta \left( \sum_i^{n-1} \tilde{y}_i^2 - 1 \right).
-		\end{aligned}
-	\end{equation} Introducing angular variables for the remaining $\tilde{y}$ variables to implement this constraint \begin{equation}
-		\begin{aligned}
-			\tilde{y}_1 &= \sin \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-2}, \\
-			\tilde{y}_2 &= \cos \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-2}, \\
-			\tilde{y}_3 &= \cos \theta_2 \sin \theta_3 \dotsb \sin \theta_{n-2}, \\
-			&\, \, \, \vdots \\
-			\tilde{y}_{n-1} &= \cos \theta_{n-2}, \label{thetatrans}
-		\end{aligned}
-	\end{equation} where $\theta_i \in [0, \pi]$ for $i = 1, \dots, n-3$ and $\theta_{n-2} \in [0, 2\pi]$, we find that the inner product becomes \begin{equation}
-		\begin{aligned}
-			\inner{\tilde{\CO}';\vec{P}', k'}{\tilde{\CO};\vec{P}, k} &= 2 P_- (2\pi)^2 \delta^2(\vec{P}-\vec{P}') \Mcal^{\textrm{(inner)}}_{k, k'; \Ocal, \Ocal'},
-		\end{aligned}
-	\end{equation} with 
-		\begin{empheq}[box=\fbox]{align}
-                    \Mcal^{\textrm{(inner)}}_{k, k'; \Ocal, \Ocal'} = &\delta_{k, k'} \frac{1}{n! 2^n (2\pi)^{2n-3}} \int dz_1 \dotsb dz_{n-1} \left( \prod_i z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i-1} \right) \nonumber \\
-			&\times \int d\theta_1 \dotsb d\theta_{n-2} \left( \prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal'}(z,\theta). \label{inner}
-		\end{empheq}
-
-
-To obtain our final Dirichlet states, we tabulate a list of Dirichlet monomials at and below a given scaling dimension $\Delta$. This set of monomials will be overcomplete, so in order to determine the complete orthonormal basis, we compute the Gram matrix using eq. (\ref{inner}) between different monomials. We then determine the final basis by performing a QR decomposition on the Gram matrix, the details of which we leave to Appendix \ref{sec:code}.
+To obtain our final Dirichlet states, we tabulate a list of Dirichlet monomials 
+at and below a given maximum Casimir eigenvalue $\mathcal{C}_{\textrm{max}}$. 
+This set of monomials will be overcomplete, so in order to determine the 
+complete orthonormal basis, we compute the Gram matrix using eq. (\ref{inner}) 
+between different monomials. We then determine the final basis by performing a 
+QR decomposition on the Gram matrix, the details of which we leave to Appendix 
+\ref{sec:code}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -425,128 +870,205 @@ To obtain our final Dirichlet states, we tabulate a list of Dirichlet monomials 
 \section{Matrix Elements and Operator Overlaps}
 \label{sec:MatrixElements}
 
-In this section, we compute the matrix elements between the invariant mass $M^2$ and the Dircichlet basis states. The mass operator can be written in terms of momentum generators as \begin{equation}
-	M^2 = 2P_+ P_- - P_\bot^2.
-\end{equation} However, since the Hamiltonian deformations we will study do not break translational invariance, we can choose a reference frame where $P_-$ is fixed and $P_\bot = 0$. We can therefore compute the simpler matrix elements \begin{equation}
-	\bra{\Ocal'; \vec{P}', k'} M^2 \ket{\Ocal; \vec{P}, k} = 2P_- \bra{\Ocal'; \vec{P}', k'} P_+ \ket{\Ocal; \vec{P}, k}.
-\end{equation} These matrix elements take the form \begin{equation}
-	\begin{aligned}
-		\bra{\Ocal'; \vec{P}', k'} M^2 \ket{\Ocal; \vec{P}, k} = 2P_- (2\pi)^2 \delta^2(\vec{P}- \vec{P}') {\Mcal}_{\Ocal,\Ocal', \, k, k'}.
-	\end{aligned}
-\end{equation} We will suppress the overall kinematic factor and focus on the matrix elements $ \Mcal_{\Ocal,\Ocal', \, k, k'}$ for the remainder of this section.
+In this section, we compute the matrix elements between the invariant mass $M^2$ 
+and the Dircichlet basis states. The mass operator can be written in terms of 
+momentum generators as 
+\begin{equation}
+    M^2 = 2P_+ P_- - P_\bot^2.
+\end{equation} 
+However, since the Hamiltonian deformations we will study do not break 
+translational invariance, we can choose a reference frame where $P_-$ is fixed 
+and $P_\bot = 0$. We can therefore compute the simpler matrix elements 
+\begin{equation}
+    \bra{\mathcal{O}'; \vec{P}', k'} M^2 \ket{\mathcal{O}; \vec{P}, k} = 2P_- \bra{\mathcal{O}'; \vec{P}', k'} P_+ \ket{\Ocal; \vec{P}, k}.
+\end{equation} 
+These matrix elements take the form 
+\begin{equation}
+    \begin{aligned}
+        \bra{\mathcal{O}'; \vec{P}', k'} M^2 \ket{\mathcal{O}; \vec{P}, k} = 2P_- (2\pi)^2 \delta^2(\vec{P}- \vec{P}') {\Mcal}_{\mathcal{O},\mathcal{O}', \, k, k'}.
+    \end{aligned}
+\end{equation} 
+We will suppress the overall kinematic factor and focus on the matrix elements 
+$ \Mcal_{\mathcal{O},\mathcal{O}', \, k, k'}$ for the remainder of this section.
 
-% We therefore divide the following matrix element computations into two stages: we first computing matrix elements between basis states with generic invariant masses $\mu$, $\mu'$. As discussed in section \ref{sec:ConstructingBasis}, our complete discretized basis is obtained by integrating over weight functions in $\mu$ and $\mu'$. We must then integrate over these weight functions to obtain our final discrete matrix elements: \begin{equation}
-% 	\begin{aligned}
-% 		\bra{\Ocal'; \vec{P}', k'} M^2 \ket{\Ocal; \vec{P}, k} = 2P_- (2\pi)^2 \delta^2(\vec{P}- \vec{P}') \Mcal_{\Ocal,\Ocal', \, k, k'}.
-% 	\end{aligned}
-% \end{equation}
-
-%  \begin{equation}
-% 	\begin{aligned}
-% 		\bra{\Ocal'; \vec{P}', \mu'} M^2 \ket{\Ocal; \vec{P}, \mu} = 2 P_-(2\pi)^2 \delta^2(\vec{P}- \vec{P}') \, \Ical_{\Ocal \Ocal'}(\mu, \mu').
-% 	\end{aligned}
-% \end{equation} and then the final discrete matrix elements are obtained by integrating the weight functions over a window: \begin{equation}
-% 	\begin{aligned}
-% 		\bra{\Ocal'; \vec{P}', k'} M^2 \ket{\Ocal; \vec{P}, k} = \int_0^1
-% 	\end{aligned}
-% \end{equation}
-
-\subsection{Kinetic Term} We begin by computing the $M^2$ matrix elements in the original CFT. As shown in [], the CFT Hamiltonian can be expressed in terms of raising and lowering operators as \begin{equation}
-	P_+^{(\textrm{CFT})} = \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{p_\bot^2}{2p_-}. \label{kineticP}
-\end{equation} Note that this term preserves particle number, so that we consider sectors with differing particle number separately. As discussed in section \ref{sec:ConstructingBasis}, our Dirichlet states take the form \begin{equation}
-	\begin{aligned}
-		\ket{\Ocal; \vec{P}, k} &= \int_0^{1} d\mu^2 g_k(\mu) \int \frac{d^2p_1 \dotsb d^2p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \ket{p_1, \dots, p_n}.
-	\end{aligned}
-\end{equation} Inserting eq. (\ref{kineticP}) in between two states and using the coordinate transformations in eqs. (\ref{xtrans}), (\ref{ytrans}), and (\ref{thetatrans}) we find that \begin{equation}
-	\begin{aligned}
-		\boxed{\Mcal^{(\textrm{CFT})}_{k, k'; \Ocal, \Ocal'} = \Lambda^2 \left( \frac{\mu_k^2 + \mu_{k-1}^2}{2} \right) \Mcal^{(\textrm{inner})}_{k, k'; \Ocal, \Ocal'}.}
-	\end{aligned}
+\subsection{Kinetic Term} 
+We begin by computing the $M^2$ matrix elements in the original CFT. The CFT 
+Hamiltonian can be expressed in terms of raising and lowering operators as 
+\begin{equation}
+    P_+^{(\textrm{CFT})} = \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{p_\bot^2}{2p_-}. \label{kineticP}
+\end{equation} 
+Note that this term preserves particle number, so that we consider sectors with 
+differing particle number separately. As discussed in section 
+\ref{sec:ConstructingBasis}, our Dirichlet states take the form 
+\begin{equation}
+    \begin{aligned}
+        | \mathcal{O};  \vec{P}, k \rangle = &\frac{1}{\sqrt{2\pi} P_-^{n + |\boldsymbol{\lambda}_-|} \Lambda^{\frac{n-5}{2} + |\boldsymbol{\lambda}_\bot|}}\int_0^{1} \frac{d\bar{\mu}^2}{\bar{\mu}^{\frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}} g_k(\bar{\mu}) \label{eqn:finalbasisstates}\\
+        &\times \frac{1}{n!}\int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left( \sum_i p_i - P \right) \\
+        &\times p_{1-} p_{2-} \dotsb p_{n-} \bar{F}_{\mathcal{O}}(p) | p_1, \dotsb, p_n \rangle.
+    \end{aligned}
+\end{equation} 
+Inserting eq. (\ref{kineticP}) in between two states and using the coordinate 
+transformations in eqs. (\ref{xtrans}), (\ref{ytrans}), and (\ref{thetatrans}) 
+we find that 
+\begin{equation}
+    \begin{aligned}
+        \boxed{\Mcal^{(\textrm{CFT})}_{k, k'; \mathcal{O}, \mathcal{O}'} = \Lambda^2 \left( \frac{\mu_k^2 + \mu_{k-1}^2}{2} \right) \delta_{k, k'} \mathcal{I}_{ \mathcal{O}, \mathcal{O}'}.}
+    \end{aligned}
 \end{equation}
 
-\subsection{Mass Term} The first deformation we consider to the UV Hamiltonian is the mass term, which results in a correction \begin{equation}
-	\begin{aligned}
-		\delta P_+^{(m)} &= \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{m^2}{2p_-}.
-	\end{aligned}
-\end{equation} Like the kinetic term, this term preserves particle number. We can use the same coordinate transformations as in the inner product and kinetic terms to arrive at \begin{empheq}[box=\fbox]{align}
-		\Mcal^{(m)}_{k, k'; \Ocal, \Ocal'} = \delta_{k , k'} &\frac{m^2}{(n-1)! 2^n (2\pi)^{2n-3}} \int dz_1 \dotsb dz_{n-1} \left( \prod_i z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i-1}  \right) \left( \frac{1}{z_{n-1}} \right) \nonumber \\
-		&\times \int d\theta_1 \dotsb d\theta_{n-2} \left( \prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal'}(z,\theta). \end{empheq}
+\subsection{Mass Term} 
+The first deformation we consider to the UV Hamiltonian is the mass term, which 
+results in a correction 
+\begin{equation}
+    \begin{aligned}
+        \delta P_+^{(m)} &= \int \frac{d^2 p}{(2\pi)^2} a^\dagg_p a_p \frac{m^2}{2p_-}.
+    \end{aligned}
+\end{equation} 
+Like the kinetic term, this term preserves particle number. We can use the same 
+coordinate transformations as in the inner product and kinetic terms to arrive 
+at 
+\begin{empheq}[box=\fbox]{align}
+    \Mcal^{(m)}_{k, k'; \Ocal, \Ocal'} = &\delta_{k , k'} \frac{m^2}{(n-1)! 2^n (2\pi)^{2n-3}} \int dz_1 \dotsb dz_{n-1} \left( \prod_i z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i-1}  \right) \\
+    &\times \left( \frac{1}{z_{n-1}} \right) \nonumber
+    \int d\theta_1 \dotsb d\theta_{n-2} \left( \prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal'}(z,\theta). 
+\end{empheq}
 
-\subsection{Quartic Interaction} We now move onto the more nontrivial deformation of a quartic interaction to the Hamiltonian, which gives rise to a Hamiltonian correction of the form \begin{equation}
-	\begin{aligned}
-		\delta P_+^{(\lambda)} = \frac{\lambda}{24} \int \frac{d^2p d^2 q d^2 k}{(2\pi)^6 \sqrt{8 p_- q_- k_-}} \left( \frac{4 a^\dagg_p a^\dagg_q a^\dagg_k a_{p+q+k}}{\sqrt{2(p_- + q_- + k_-)}} + \textrm{ h.c. } + \frac{6 a^\dagg_p a^\dagg_q a_k a_{p+q-k}}{\sqrt{2(p_- + q_- - k_-)}} \right). \label{quarticdef}
-	\end{aligned}
-\end{equation} This deformation contains two types of terms, one that changes particle number and one that preserves it. We will refer to the former, which corresponds to the first two terms in eq. \eqref{quarticdef}, as the $n$-to-$n+2$ interaction since it changes particle number by two. We will call the latter type of term in eq. \eqref{quarticdef} the $n$-to-$n$ interaction.
+\subsection{Quartic Interaction} 
+We now move onto the more nontrivial deformation of a quartic interaction to the 
+Hamiltonian, which gives rise to a Hamiltonian correction of the form 
+\begin{equation}
+    \begin{aligned}
+        \delta P_+^{(\lambda)} = \frac{\lambda}{24} \int \frac{d^2p d^2 q d^2 k}{(2\pi)^6 \sqrt{8 p_- q_- k_-}} \left( \frac{4 a^\dagg_p a^\dagg_q a^\dagg_k a_{p+q+k}}{\sqrt{2(p_- + q_- + k_-)}} + \textrm{ h.c. } + \frac{6 a^\dagg_p a^\dagg_q a_k a_{p+q-k}}{\sqrt{2(p_- + q_- - k_-)}} \right). \label{quarticdef}
+    \end{aligned}
+\end{equation} 
+This deformation contains two types of terms, one that changes particle number 
+and one that preserves it. We will refer to the former, which corresponds to the 
+first two terms in eq. \eqref{quarticdef}, as the $n$-to-$n+2$ interaction since 
+it changes particle number by two. We will call the latter type of term in eq. 
+\eqref{quarticdef} the $n$-to-$n$ interaction.
 
-Unlike the kinetic and mass terms, the interaction terms give rise to matrix elements that depend separately on both $\mu$ and $\mu'$. In other words, the discretization integrals over $\mu$ and $\mu'$ do not collapse into one simple integral, but instead depend on $\mu$ and $\mu'$ through the ratio \begin{equation}
-	\boxed{\alpha \equiv \frac{\mu}{\mu'} .}
-\end{equation} For this reason, we will introduce the useful notation \begin{equation}
-	\begin{aligned}
-		\bra{\Ocal'; \vec{P}', k'} \delta M^2 \ket{\Ocal; \vec{P}, k} = 2P_- (2\pi)^2 \delta^2(\vec{P}- \vec{P}') \frac{\lambda \Lambda}{2\pi} \int_0^1 d\mu^2  \int_0^1d{\mu'}^2  g_k(\mu^2) g_{k'}({\mu'}^2) \Mcal_{\Ocal \Ocal'}(\alpha).
-	\end{aligned}
-\end{equation} The computation of $\Mcal_{\Ocal \Ocal'}(\alpha)$ for the interaction terms will be the main focus of the following two sections. We will explain the details of the discretization procedure in the interaction matrix elements in section \ref{sec:discretint}.
+Unlike the kinetic and mass terms, the interaction terms give rise to matrix 
+elements that depend separately on both $\mu$ and $\mu'$. In other words, the 
+discretization integrals over $\mu$ and $\mu'$ do not collapse into one simple 
+integral, but instead depend on $\mu$ and $\mu'$ through the ratio 
+\begin{equation}
+    \boxed{\alpha \equiv \frac{\mu}{\mu'} .}
+\end{equation} 
+For this reason, we will introduce the useful notation 
+\begin{equation}
+    \begin{aligned}
+        &\bra{\Ocal'; \vec{P}', k'} \delta M^2 \ket{\Ocal; \vec{P}, k} = 2P_- (2\pi)^2 \delta^2(\vec{P}- \vec{P}') \\
+        &\times  \frac{\lambda \Lambda}{2\pi} \frac{1}{P_-^{2n+ |\boldsymbol{\lambda}_-|+|\boldsymbol{\lambda}^{\prime}_\bot|} \Lambda^{n-5 + |\boldsymbol{\lambda}_\bot|+|\boldsymbol{\lambda}^{\prime}_-|}}\int_0^{1} \frac{d\bar{\mu}^2}{\bar{\mu}^{\frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}} \int_0^{1} \frac{d\bar{\mu}^{\prime 2}}{\bar{\mu}^{\prime \frac{n-3}{2} + |\boldsymbol{\lambda}_\bot|}}  g_k(\bar{\mu}^2) g_{k'}(\bar{\mu}^{\prime 2}) \Mcal_{\Ocal \Ocal'}(\alpha).
+    \end{aligned}
+\end{equation} 
+The computation of $\Mcal_{\Ocal \Ocal'}(\alpha)$ for the interaction terms will 
+be the main focus of the following two sections. 
 
-\subsubsection{$n$-to-$n+2$ Interaction} Let's first consider the $n$-to-$n+2$ interaction, which gives rise to the following matrix element between an $n$ particle state and an $n+2$ particle state: \begin{equation}
-	\begin{aligned}
-		\Mcal^{(n\textrm{-to-}n+2)}_{\Ocal \Ocal'}(\alpha) &= \frac{\lambda}{6(n-1)!} \int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \\
-		&\times \int \frac{d^2p_1' \dotsb d^2p_{n+2}'}{(2\pi)^{2n+4} 2p_{1-}' \dotsb 2p'_{n+2-}} (2\pi)^3 \delta^3\left(\sum_i p'_i - P' \right) p'_{1-} \dotsb p'_{n+2-} \bar{F}_{\Ocal'}(p') \\
-		&\times 2p_{2-} (2\pi)^2 \delta^2(p_2 - p'_4) \dotsb 2 p_{n-} (2\pi)^2 \delta^2 (p_n - p'_{n+2}).
-	\end{aligned}
-\end{equation} It is useful to switch to the dimensionless variables defined in eq. (\ref{dimlessvars}) separately for the both the primed and unprimed variables. That is, we take eq. \eqref{xtrans}-\eqref{ytrans} for the unprimed variables and \begin{equation}
-		\begin{aligned}
-			x_1' &= (1-z'_1)(1-z'_2)(1-z'_3) \dotsb (1-z'_{n+1}), \\
-			x_2' &= \quad\quad\,\,\, z'_1(1-z'_2)(1-z'_3) \dotsb (1-z'_{n+1}), \\
-			x_3' &= \quad\quad\,\,\, \quad\quad\quad\,\, z'_2(1-z_3') \dotsb (1-z_{n+1}'), \\
-			&\vdots \quad\quad\quad\quad\quad\quad\quad\quad\quad \ddots \\
-			x_{n+2}' &= \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad z_{n+1}' \label{xtransprimed}
-		\end{aligned}
-	\end{equation} for the primed coordinates and analogously for eq. \eqref{ytrans}. We then find \begin{equation}
-		\begin{aligned}
-			&\Mcal^{(n\textrm{-to-}n+2)}_{\Ocal \Ocal'}(\alpha) = \frac{\lambda n \sqrt{(n+1)(n+2)}}{24 \pi} \frac{1}{\mu'} \alpha^{\frac{n-3}{2}} \int dz_1 \dotsb dz_{n-1}   d\tilde{y}_1 \dotsb d\tilde{y}_{n-1}  \left( \prod_{i=1}^{n-1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i+1} \right)  \\
-			&\times \delta\left(\sum_i^{n-1} \tilde{y}^2_{n-1} -1  \right) \bar{F}_{\Ocal}(z,\tilde{y}) \int dz'_1 dz'_2  d\tilde{y}'_1 d\tilde{y}_2'\, {z'_1}^{\frac{1}{2}} (1-z'_1)^{\frac{1}{2}} {z'_2}^{\frac{1}{2}} (1-z'_2)^2 \\
-			&\times \delta\left(\tilde{y}_1^{\prime 2} + \tilde{y}_2^{\prime 2} + \alpha^2 \sum_{i=1}^{n-1} \tilde{y}_i^2 - 1 \right) \bar{F}_{\Ocal'}(z', \tilde{y},\tilde{y}').
-		\end{aligned}
-	\end{equation} The first delta function constrains the $n-1$ $\tilde{y}$'s, which correspond to the variables of the ``spectator'' particles, to a sphere of radius 1. The other delta function for the interacting particles constrains $\tilde{y}'$ to a sphere of radius $1-\alpha^2$, which constrains $\alpha \le 1$. Physically, this is due to the fact that the $n$-to-$n+2$ interactions can only increase the kinetic energy due to the creation of two additional particles. Parameterizing these two spheres with angular variables for the spectators and interacting particles we obtain \begin{empheq}[box=\fbox]{align}
-			&\Mcal^{(n\textrm{-to-}n+2)}_{\Ocal \Ocal'}(\alpha) = \frac{1}{(n-1)! 3 \pi^{2n} 2^{3n+4}} \frac{1}{\mu'} \alpha^{\frac{n-3}{2}}  \nonumber \\
-			&\times \int dz_1 \dotsb dz_{n-1} dz'_1 dz'_2   \left( \prod_{i=1}^{n-1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i+1} \right) {z'_1}^{\frac{1}{2}} (1-z'_1)^{\frac{1}{2}} {z'_2}^{\frac{1}{2}} (1-z'_2)^2 \nonumber \\
-			&\times \int d\theta_1 \dotsb d\theta_{n-2} d\theta' \left(\prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal}(z',\theta',\theta,\alpha).
-		\end{empheq}
+\subsubsection{$n$-to-$n+2$ Interaction} 
+Let's first consider the $n$-to-$n+2$ interaction, which gives rise to the 
+following matrix element between an $n$ particle state and an $n+2$ particle 
+state: 
+\begin{equation}
+    \begin{aligned}
+        \Mcal^{(n\textrm{-to-}n+2)}_{\Ocal \Ocal'}(\alpha) &= \frac{\lambda}{6(n-1)!} \int \frac{d^2 p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3 \left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \\
+        &\times \int \frac{d^2p_1' \dotsb d^2p_{n+2}'}{(2\pi)^{2n+4} 2p_{1-}' \dotsb 2p'_{n+2-}} (2\pi)^3 \delta^3\left(\sum_i p'_i - P' \right) p'_{1-} \dotsb p'_{n+2-} \bar{F}_{\Ocal'}(p') \\
+        &\times 2p_{2-} (2\pi)^2 \delta^2(p_2 - p'_4) \dotsb 2 p_{n-} (2\pi)^2 \delta^2 (p_n - p'_{n+2}).
+    \end{aligned}
+\end{equation} 
+It is useful to switch to the dimensionless variables defined in eq. 
+(\ref{dimlessvars}) separately for the both the primed and unprimed variables. 
+That is, we take eq. \eqref{xtrans}-\eqref{ytrans} for the unprimed variables 
+and 
+\begin{equation}
+    \begin{aligned}
+        x_1' &= (1-z'_1)(1-z'_2)(1-z'_3) \dotsb (1-z'_{n+1}), \\
+        x_2' &= \quad\quad\,\,\, z'_1(1-z'_2)(1-z'_3) \dotsb (1-z'_{n+1}), \\
+        x_3' &= \quad\quad\,\,\, \quad\quad\quad\,\, z'_2(1-z_3') \dotsb (1-z_{n+1}'), \\
+        &\vdots \quad\quad\quad\quad\quad\quad\quad\quad\quad \ddots \\
+        x_{n+2}' &= \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad z_{n+1}' \label{xtransprimed}
+    \end{aligned}
+\end{equation} 
+for the primed coordinates and analogously for eq. \eqref{ytrans}. We then find 
+\begin{equation}
+    \begin{aligned}
+        &\Mcal^{(n\textrm{-to-}n+2)}_{\Ocal \Ocal'}(\alpha) = \frac{\lambda n \sqrt{(n+1)(n+2)}}{24 \pi} \frac{1}{\mu'} \alpha^{\frac{n-3}{2}} \int dz_1 \dotsb dz_{n-1}   d\tilde{y}_1 \dotsb d\tilde{y}_{n-1}  \\
+        &\times \left( \prod_{i=1}^{n-1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i+1} \right) \delta\left(\sum_i^{n-1} \tilde{y}^2_{n-1} -1  \right) \bar{F}_{\Ocal}(z,\tilde{y}) \\
+        &\times \int dz'_1 dz'_2  d\tilde{y}'_1 d\tilde{y}_2'\, {z'_1}^{\frac{1}{2}} (1-z'_1)^{\frac{1}{2}} {z'_2}^{\frac{1}{2}} (1-z'_2)^2 \\
+        &\times \delta\left(\tilde{y}_1^{\prime 2} + \tilde{y}_2^{\prime 2} + \alpha^2 \sum_{i=1}^{n-1} \tilde{y}_i^2 - 1 \right) \bar{F}_{\Ocal'}(z', \tilde{y},\tilde{y}').
+    \end{aligned}
+\end{equation} 
+The first delta function constrains the $n-1$ $\tilde{y}$'s, which correspond to 
+the variables of the ``spectator'' particles, to a sphere of radius 1. The other 
+delta function for the interacting particles constrains $\tilde{y}'$ to a sphere 
+of radius $1-\alpha^2$, which constrains $\alpha \le 1$. Physically, this is due 
+to the fact that the $n$-to-$n+2$ interactions can only increase the kinetic 
+energy due to the creation of two additional particles. Parameterizing these two 
+spheres with angular variables for the spectators and interacting particles we 
+obtain 
+\begin{empheq}[box=\fbox]{align}
+    &\Mcal^{(n\textrm{-to-}n+2)}_{\Ocal \Ocal'}(\alpha) = \frac{1}{(n-1)! 3 \pi^{2n} 2^{3n+4}} \frac{1}{\mu'} \alpha^{\frac{n-3}{2}}  \nonumber \\
+    &\times \int dz_1 \dotsb dz_{n-1} dz'_1 dz'_2   \left( \prod_{i=1}^{n-1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5}{2}i+1} \right) {z'_1}^{\frac{1}{2}} (1-z'_1)^{\frac{1}{2}} {z'_2}^{\frac{1}{2}} (1-z'_2)^2 \nonumber \\
+    &\times \int d\theta_1 \dotsb d\theta_{n-2} d\theta' \left(\prod_j \sin^{j-1} \theta_j \right) \bar{F}_{\Ocal}(z,\theta) \bar{F}_{\Ocal}(z',\theta',\theta,\alpha).
+\end{empheq}
 
-\subsubsection{$n$-to-$n$ Interaction} Finally, we turn to the $n$-to-$n$ part of the quartic interaction. It takes the form \begin{equation}
-	\begin{aligned}
-		\Mcal_{\Ocal \Ocal'}^{(n-\textrm{to}-n)}(\alpha) = \frac{\lambda n(n-1)}{4}& \frac{1}{n!} \int \frac{d^2p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \\
-		&\times \int \frac{d^2 p'_1 \dotsb d^2 p'_n}{(2\pi)^{2n} 2p'_{1-} \dotsb 2p'_{n-}} (2\pi)^3 \delta^3\left(\sum_i p'_i - P' \right) p'_{1-} \dotsb p'_{n-} \bar{F}_{\Ocal}(p') \\
-		&\times 2p_{3-}(2\pi)^2 \delta^2(p_3 - p_3') \dotsb 2p_{n-} (2\pi)^2 \delta^2(p_n -p'_n).
-	\end{aligned}
-\end{equation} Performing the coordinate transforms in eqs. \eqref{xtrans}-\eqref{ytrans} for both the primed and unprimed coordinates, we find \begin{equation}
-	\begin{aligned}
-		\Mcal_{\Ocal \Ocal'}^{(n-\textrm{to}-n)}(\alpha) =& \frac{\lambda n(n-1) \alpha^{\frac{n-3}{2}}}{16 \pi \mu'} \int dz_1  d\tilde{y}_1 dz'_1 d\tilde{y}'_1 \sqrt{z_1 (1-z_1) z'_1 (1-z'_1)} \\
-		&\times \delta\left(\sum_i \tilde{y}_i^2 - 1 \right) \delta\left({\tilde{y}_1}^{\prime 2} +  \alpha^2 \sum_{i =2}\tilde{y}_i^2  -1\right) \\
-		&\times \int dz_2 \dotsb dz_{n-1} d\tilde{y}_2 \dotsb d\tilde{y}_{n-1} \left( \prod_{i>1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5i-3}{2}} \right) F_{\Ocal}(z,\tilde{y}) F_{\Ocal}(z',\tilde{y}').
-	\end{aligned}
-\end{equation} We can use the delta functions to perform the integration over the $\tilde{y}$ coordinates of the interacting particles. Note that they impose the constraints \begin{equation}
-	\tilde{y}_1 = \pm\sqrt{1-r^2}, \quad\quad\quad\quad\quad \tilde{y}_1^{\prime} = \pm \sqrt{ 1 - \alpha^2 r^2},
-\end{equation} where \begin{equation}
-	r^2 \equiv \tilde{y}_2^2 - \tilde{y}_3^2 \dotsb - \tilde{y}_{n-1}^2.
-\end{equation} Note that when $\alpha =1$, the two constraints coincide, and the range of integration $r$ is taken to be between $[0,1]$. Similarly, when $\alpha < 1 $, the reality condition on $\tilde{y}_1$ requires $r \in [0,1]$, which automatically satisfies the constraint on $\tilde{y}'_1$. However, when $\alpha > 1$, the reality condition on $\tilde{y}'_1$ provides a stronger constraint and requires $r \in [0, \alpha^{-1} ]$.
+\subsubsection{$n$-to-$n$ Interaction} 
+Finally, we turn to the $n$-to-$n$ part of the quartic interaction. It takes the 
+form 
+\begin{equation}
+    \begin{aligned}
+        \Mcal_{\Ocal \Ocal'}^{(n-\textrm{to}-n)}(\alpha) = &\frac{\lambda n(n-1)}{4} \frac{1}{n!} \int \frac{d^2p_1 \dotsb d^2 p_n}{(2\pi)^{2n} 2p_{1-} \dotsb 2p_{n-}} (2\pi)^3 \delta^3\left(\sum_i p_i - P \right) \\
+        &\times p_{1-} \dotsb p_{n-} \bar{F}_{\Ocal}(p) \int \frac{d^2 p'_1 \dotsb d^2 p'_n}{(2\pi)^{2n} 2p'_{1-} \dotsb 2p'_{n-}} \\
+        &\times (2\pi)^3 \delta^3\left(\sum_i p'_i - P' \right) p'_{1-} \dotsb p'_{n-} \bar{F}_{\Ocal}(p') \\
+        &\times 2p_{3-}(2\pi)^2 \delta^2(p_3 - p_3') \dotsb 2p_{n-} (2\pi)^2 \delta^2(p_n -p'_n).
+    \end{aligned}
+\end{equation} 
+Performing the coordinate transforms in eqs. \eqref{xtrans}-\eqref{ytrans} for 
+both the primed and unprimed coordinates, we find 
+\begin{equation}
+    \begin{aligned}
+        \Mcal_{\Ocal \Ocal'}^{(n-\textrm{to}-n)}(\alpha) =& \frac{\lambda n(n-1) \alpha^{\frac{n-3}{2}}}{16 \pi \mu'} \int dz_1  d\tilde{y}_1 dz'_1 d\tilde{y}'_1 \sqrt{z_1 (1-z_1) z'_1 (1-z'_1)} \\
+        &\times \delta\left(\sum_i \tilde{y}_i^2 - 1 \right) \delta\left({\tilde{y}_1}^{\prime 2} +  \alpha^2 \sum_{i =2}\tilde{y}_i^2  -1\right) \\
+        &\times \int dz_2 \dotsb dz_{n-1} d\tilde{y}_2 \dotsb d\tilde{y}_{n-1} \left( \prod_{i>1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5i-3}{2}} \right) \\
+        &\times F_{\Ocal}(z,\tilde{y}) F_{\Ocal}(z',\tilde{y}').
+    \end{aligned}
+\end{equation} 
+We can use the delta functions to perform the integration over the $\tilde{y}$ 
+coordinates of the interacting particles. Note that they impose the constraints 
+\begin{equation}
+    \tilde{y}_1 = \pm\sqrt{1-r^2}, \quad\quad\quad\quad\quad \tilde{y}_1^{\prime} = \pm \sqrt{ 1 - \alpha^2 r^2},
+\end{equation} 
+where 
+\begin{equation}
+    r^2 \equiv \tilde{y}_2^2 - \tilde{y}_3^2 \dotsb - \tilde{y}_{n-1}^2.
+\end{equation} 
+Note that when $\alpha =1$, the two constraints coincide, and the range of 
+integration $r$ is taken to be between $[0,1]$. Similarly, when $\alpha < 1 $, 
+the reality condition on $\tilde{y}_1$ requires $r \in [0,1]$, which 
+automatically satisfies the constraint on $\tilde{y}'_1$. However, when 
+$\alpha > 1$, the reality condition on $\tilde{y}'_1$ provides a stronger 
+constraint and requires $r \in [0, \alpha^{-1} ]$.
 
-Defining spherical coordinates for the remaining spectators \begin{equation}
-	\begin{aligned}
-		\tilde{y}_2 &= r \sin \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-3}, \\
-		\tilde{y}_3 &= r \cos \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-3}, \\
-		\tilde{y}_4 &= r \cos \theta_2 \sin \theta_3 \dotsb \sin \theta_{n-3}, \\
-		&\, \, \, \vdots \\
-		\tilde{y}_{n-1} &= r \cos \theta_{n-3},
-	\end{aligned}
-\end{equation} and defining \begin{equation}
-	\bar{F}_{\Ocal \pm} \equiv \bar{F}_{\Ocal}(\tilde{y}_1 = \pm \sqrt{1-r^2}),\quad\quad\quad\quad \bar{F}_{\Ocal' \pm} \equiv \bar{F}_{\Ocal'}(\tilde{y}_1 = \pm \sqrt{1-\alpha^2 r^2}),
-\end{equation} the matrix element can be summarized as \begin{empheq}[box=\fbox]{align}
-			&\Mcal^{(n\textrm{-to-}n)}_{\Ocal \Ocal'}(\alpha) = \frac{1}{(n-2)! \pi^{2n-2} 2^{3n+2}} \frac{1}{\mu'} \alpha^{\frac{n-3}{2}}  \nonumber \\
-			&\times \int dz_1 \dotsb dz_{n-1} dz'_1 \sqrt{z_1(1-z_1)z'_1(1-z'_1)} \left(\prod_{i > 1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5i-3}{2}} \right) \nonumber \\
-			&\times \int_0^{\min \left(1,\alpha^{-1} \right)} dr \int d\theta_1 \dotsb d\theta_{n-3} \left( \prod_j \sin^{j-1} \theta_j \right) \frac{r^{n-3}}{\sqrt{(1-r^2)(1-\alpha^2 r^2)}} \nonumber \\
-			&\times \left(\sum_{\pm} \bar{F}_{\Ocal}(z,r,\theta) \right)\left(\sum_{\pm} \bar{F}_{\Ocal'}(z,\alpha r, \theta) \right).
-		\end{empheq}
-
-\subsubsection{Discretization of Interaction Matrix Elements}\label{sec:discretint}
+Defining spherical coordinates for the remaining spectators 
+\begin{equation}
+    \begin{aligned}
+        \tilde{y}_2 &= r \sin \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-3}, \\
+        \tilde{y}_3 &= r \cos \theta_1 \sin \theta_2 \dotsb \sin \theta_{n-3}, \\
+        \tilde{y}_4 &= r \cos \theta_2 \sin \theta_3 \dotsb \sin \theta_{n-3}, \\
+        &\, \, \, \vdots \\
+        \tilde{y}_{n-1} &= r \cos \theta_{n-3},
+    \end{aligned}
+\end{equation} 
+and defining 
+\begin{equation}
+    \bar{F}_{\Ocal \pm} \equiv \bar{F}_{\Ocal}(\tilde{y}_1 = \pm \sqrt{1-r^2}),\quad\quad\quad\quad \bar{F}_{\Ocal' \pm} \equiv \bar{F}_{\Ocal'}(\tilde{y}_1 = \pm \sqrt{1-\alpha^2 r^2}),
+\end{equation} 
+the matrix element can be summarized as 
+\begin{empheq}[box=\fbox]{align}
+    &\Mcal^{(n\textrm{-to-}n)}_{\Ocal \Ocal'}(\alpha) = \frac{1}{(n-2)! \pi^{2n-2} 2^{3n+2}} \frac{1}{\mu'} \alpha^{\frac{n-3}{2}}  \nonumber \\
+    &\times \int dz_1 \dotsb dz_{n-1} dz'_1 \sqrt{z_1(1-z_1)z'_1(1-z'_1)} \left(\prod_{i > 1} z_i^{\frac{3}{2}} (1-z_i)^{\frac{5i-3}{2}} \right) \nonumber \\
+    &\times \int_0^{\min \left(1,\alpha^{-1} \right)} dr \int d\theta_1 \dotsb d\theta_{n-3} \left( \prod_j \sin^{j-1} \theta_j \right) \frac{r^{n-3}}{\sqrt{(1-r^2)(1-\alpha^2 r^2)}} \nonumber \\
+    &\times \left(\sum_{\pm} \bar{F}_{\Ocal}(z,r,\theta) \right)\left(\sum_{\pm} \bar{F}_{\Ocal'}(z,\alpha r, \theta) \right).
+\end{empheq}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
